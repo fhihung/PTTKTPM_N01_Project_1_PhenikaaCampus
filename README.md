@@ -1,4 +1,4 @@
-#Information about p
+# Information about project
 
 # Flutter Riverpod
 
