@@ -1,3 +1,5 @@
+# Information about project
+
 # Flutter Riverpod
 
 Flutter project using Riverpod state management
@@ -16,22 +18,22 @@ Flutter project using Riverpod state management
 
 https://user-images.githubusercontent.com/22645452/204953475-65522ee8-caaf-4fa4-9305-507c390914f3.mp4
 
-17. Load more
+1. Load more
 
 https://user-images.githubusercontent.com/22645452/204954223-1e5e8731-2baa-45d3-bf04-d26e09600975.mp4
 0 18. Retry when error
 
 https://user-images.githubusercontent.com/22645452/204954446-db337cad-d509-47d4-984c-d54f0386afb4.mp4
 
-19. Nested navigation
+1. Nested navigation
 
 https://user-images.githubusercontent.com/22645452/204954558-ceddfea2-bce0-472d-b02a-6066212a8758.mp4
 
-20. Dark mode
+1. Dark mode
 
 https://user-images.githubusercontent.com/22645452/204954605-fe57620c-69af-4628-bdc6-8483c8f3f4a9.mp4
 
-21. Change App Language
+1. Change App Language
 
 https://user-images.githubusercontent.com/22645452/204954653-a704d380-0f6a-419d-a740-3bff74252ce2.mp4
 
