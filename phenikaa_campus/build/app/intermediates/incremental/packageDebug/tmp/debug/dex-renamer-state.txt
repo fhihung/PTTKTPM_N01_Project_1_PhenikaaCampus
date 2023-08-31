@@ -1,0 +1,4 @@
+#Thu Aug 31 10:36:20 ICT 2023
+base.0=/home/quangvid/Documents/GitHub/PTTKTPM_N01_Project_1_PhenikaaCampus/phenikaa_campus/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
