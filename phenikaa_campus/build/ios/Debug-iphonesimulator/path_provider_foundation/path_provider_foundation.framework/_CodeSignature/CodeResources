@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/path_provider_foundation.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		JdMiAgCFj4Tj2IKCwQ3BSwmIG3E=
+		T30SQiYoQjVa05URBvzS/IvUVSE=
 		</data>
 		<key>Modules/path_provider_foundation.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		iiZRovxT2+ZzZROrEz4Z9ZnZL1c=
+		ZTY2RQQMnoyncQoCGGMydFd9vuk=
 		</data>
 		<key>Modules/path_provider_foundation.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/path_provider_foundation.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		haEX5WlRdj6Qd4znXC8oNL2hACg=
+		EUSQvd23V7h2v78zxCALdA/54y8=
 		</data>
 		<key>Modules/path_provider_foundation.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/path_provider_foundation.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		gLaUWDo4sXAnW4gzdkxh+UuWucg=
+		bryeYJPAnQPKkyUdDIHsXLRDFNg=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -80,14 +80,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			b+BawHHSldjEb+FOsE99+SPUL6yE4/9tLcYRqv2arrA=
+			1+gtsrLgm90zrAdozYTYQGpbCgpKw7eEnB2IDTA/hHA=
 			</data>
 		</dict>
 		<key>Modules/path_provider_foundation.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LAmUVdV0yplljO+zGoGRJAbJFVkyujT9NtlhpAF/HEg=
+			S3uEKOk0/+MgodRj0uimSYvB7vpo2LTouu1z9laZ5/M=
 			</data>
 		</dict>
 		<key>Modules/path_provider_foundation.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -108,7 +108,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6wEi0Mc8qcb+eW5/VtRbi+ierYiEGzMRHStDD73BJ0s=
+			mDItQHDejLJvkn8+ev/M5W/2GDFWLRsmKEtevbtI6LA=
 			</data>
 		</dict>
 		<key>Modules/path_provider_foundation.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -129,7 +129,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZjcJ1omedmhm3Ko+4hsrb2R6/dIIpVQ88Gy2fIss3pQ=
+			T4FTlUi9DswWSqjn4LBj9mW81jD1h0nRzSNXjq9HRuM=
 			</data>
 		</dict>
 	</dict>
