@@ -1,4 +1,8 @@
-#Information about p
+# Information about project
+
+# Appwrite
+
+Flutter project using appwrite
 
 # Flutter Riverpod
 
