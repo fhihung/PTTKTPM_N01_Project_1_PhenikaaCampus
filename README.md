@@ -1,5 +1,9 @@
 # Information about project
 
+# Appwrite
+
+Flutter project using appwrite
+
 # Flutter Riverpod
 
 Flutter project using Riverpod state management
