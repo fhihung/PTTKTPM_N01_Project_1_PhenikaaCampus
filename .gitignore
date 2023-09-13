@@ -30,7 +30,7 @@
 /phenikaa_campus/pubspec.lock
 /phenikaa_campus/.pub-cache/
 /phenikaa_campus/.pub/
-/phenikaa_campus//build/
+/phenikaa_campus/build/
 **/coverage
 
 # Web related
