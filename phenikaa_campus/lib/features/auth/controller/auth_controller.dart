@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phenikaa_campus/apis/auth_api.dart';
 import 'package:phenikaa_campus/core/utils.dart';
+import 'package:phenikaa_campus/features/auth/view/home_view.dart';
+import 'package:phenikaa_campus/features/auth/view/login_view.dart';
 
 final authControllerProvider =
     StateNotifierProvider<AuthController, dynamic>((ref) {
@@ -16,6 +18,8 @@ class AuthController extends StateNotifier<bool> {
       : _authAPI = authAPI,
         super(false);
   //isLoading
+
+  //_account.get() != null ? HomeScreen : Login
   void signUp({
     required String email,
     required String password,
@@ -26,10 +30,10 @@ class AuthController extends StateNotifier<bool> {
       email: email,
       password: password,
     );
-    res.fold(
-      (l) => showSnackBar(context, l.message),
-      (r) => print(r.email),
-    );
+    res.fold((l) => showSnackBar(context, l.message), (r) {
+      showSnackBar(context, 'Account created! Please login.');
+      Navigator.push(context, LoginView.route());
+    });
   }
 
   void login({
@@ -42,9 +46,8 @@ class AuthController extends StateNotifier<bool> {
       email: email,
       password: password,
     );
-    res.fold(
-      (l) => showSnackBar(context, l.message),
-      (r) => print(r.userId),
-    );
+    res.fold((l) => showSnackBar(context, l.message), (r) {
+      Navigator.push(context, HomeView.route());
+    });
   }
 }
