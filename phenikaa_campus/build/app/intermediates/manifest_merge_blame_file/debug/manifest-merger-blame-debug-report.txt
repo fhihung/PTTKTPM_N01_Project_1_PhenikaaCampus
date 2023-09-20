@@ -13,8 +13,8 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->/home/quangvid/Documents/GitHub/PTTKTPM_N01_Project_1_PhenikaaCampus/phenikaa_campus/android/app/src/debug/AndroidManifest.xml:6:5-66
-15-->/home/quangvid/Documents/GitHub/PTTKTPM_N01_Project_1_PhenikaaCampus/phenikaa_campus/android/app/src/debug/AndroidManifest.xml:6:22-64
+15-->/home/quangvid/Documents/GitHub/PTTKTPM_N01_Project_1_PhenikaaCampus/phenikaa_campus/android/app/src/main/AndroidManifest.xml:33:9-70
+15-->/home/quangvid/Documents/GitHub/PTTKTPM_N01_Project_1_PhenikaaCampus/phenikaa_campus/android/app/src/main/AndroidManifest.xml:33:26-68
 16
 17    <permission
 17-->[androidx.core:core:1.10.1] /home/quangvid/.gradle/caches/transforms-3/c4988ff80110f75080a936fc6f044848/transformed/core-1.10.1/AndroidManifest.xml:22:5-24:47
