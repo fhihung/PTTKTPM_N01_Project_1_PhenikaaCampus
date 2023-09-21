@@ -22,7 +22,6 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
   final passwordController = TextEditingController();
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
@@ -43,7 +42,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
         body: Center(
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(children: [
                 //TextField username
                 AuthField(

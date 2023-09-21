@@ -1,3 +1,4 @@
+import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phenikaa_campus/apis/auth_api.dart';
@@ -6,11 +7,17 @@ import 'package:phenikaa_campus/features/auth/view/home_view.dart';
 import 'package:phenikaa_campus/features/auth/view/login_view.dart';
 
 final authControllerProvider =
-    StateNotifierProvider<AuthController, dynamic>((ref) {
+    StateNotifierProvider<AuthController, bool>((ref) {
   return AuthController(
     authAPI: ref.watch(authAPIProvider),
   );
 });
+final currentUserAccountProvider = FutureProvider(
+  (ref) {
+    final authController = ref.watch(authControllerProvider.notifier);
+    return authController.currentUser();
+  },
+);
 
 class AuthController extends StateNotifier<bool> {
   final AuthAPI _authAPI;
@@ -18,7 +25,7 @@ class AuthController extends StateNotifier<bool> {
       : _authAPI = authAPI,
         super(false);
   //isLoading
-
+  Future<User?> currentUser() => _authAPI.currentUserAccount();
   //_account.get() != null ? HomeScreen : Login
   void signUp({
     required String email,
