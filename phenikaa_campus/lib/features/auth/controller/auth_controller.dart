@@ -2,6 +2,7 @@ import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phenikaa_campus/apis/auth_api.dart';
+import 'package:phenikaa_campus/apis/user_api.dart';
 import 'package:phenikaa_campus/core/utils.dart';
 import 'package:phenikaa_campus/features/auth/view/home_view.dart';
 import 'package:phenikaa_campus/features/auth/view/login_view.dart';
@@ -9,6 +10,7 @@ import 'package:phenikaa_campus/features/auth/view/login_view.dart';
 final authControllerProvider =
     StateNotifierProvider<AuthController, bool>((ref) {
   return AuthController(
+    userAPI: ref.watch(userAPIProvider),
     authAPI: ref.watch(authAPIProvider),
   );
 });
@@ -21,7 +23,8 @@ final currentUserAccountProvider = FutureProvider(
 
 class AuthController extends StateNotifier<bool> {
   final AuthAPI _authAPI;
-  AuthController({required AuthAPI authAPI})
+  // final UserAPI _userAPI;
+  AuthController({required AuthAPI authAPI, required UserAPI userAPI})
       : _authAPI = authAPI,
         super(false);
   //isLoading
