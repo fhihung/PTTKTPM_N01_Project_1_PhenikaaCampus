@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,6 +8,7 @@ import 'package:phenikaa_campus/apis/user_api.dart';
 import 'package:phenikaa_campus/core/utils.dart';
 import 'package:phenikaa_campus/features/auth/view/login_view.dart';
 import 'package:phenikaa_campus/features/home/view/home_view.dart';
+import 'package:phenikaa_campus/models/user_models.dart';
 
 final authControllerProvider =
     StateNotifierProvider<AuthController, bool>((ref) {
@@ -61,4 +64,10 @@ class AuthController extends StateNotifier<bool> {
       Navigator.push(context, HomeView.route());
     });
   }
-}
+
+  Future<UserModel> getUserData (String uid){
+  final Document = await _userAPI.getUserData(uid);
+  final updateUser = UserModel.fromMap(document.data);
+  return updateUser;
+  }
+} 

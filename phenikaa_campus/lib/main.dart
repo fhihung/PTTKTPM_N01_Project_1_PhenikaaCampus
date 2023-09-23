@@ -26,11 +26,13 @@ class MyApp extends ConsumerWidget {
         theme: AppTheme.theme,
         home: ref.watch(currentUserAccountProvider).when(
             data: (user) {
-              if (user != null) {
-                return const HomeView();
-              } else {
-                return const SignUpView();
-              }
+              // if (user != null) {
+              //   return const HomeView();
+              // } else {
+              //   return const SignUpView();
+              // }
+
+              return const HomeView();
             },
             loading: () => const LoadingPage(),
             error: (error, s) {
