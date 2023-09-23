@@ -23,9 +23,10 @@ final currentUserAccountProvider = FutureProvider(
 
 class AuthController extends StateNotifier<bool> {
   final AuthAPI _authAPI;
-  // final UserAPI _userAPI;
+  final UserAPI _userAPI;
   AuthController({required AuthAPI authAPI, required UserAPI userAPI})
       : _authAPI = authAPI,
+        _userAPI = userAPI,
         super(false);
   //isLoading
   Future<User?> currentUser() => _authAPI.currentUserAccount();

@@ -1,5 +1,5 @@
 class AppwriteConstants {
-  static const String databaseId = '64cab323e65758f2b66c';
+  static const String databaseId = '650e5f57d4ed6ecd9c97';
 
   //local
   // static const String projectId = '64caa6992ef2d821e2c3';
@@ -11,5 +11,5 @@ class AppwriteConstants {
   // static const String endPoint = 'http://localhost:80/v1';
   //cloud
   static const String endPoint = 'https://cloud.appwrite.io/v1';
-  static const String userCollection = 'pkaCampus';
+  static const String userCollection = '650e5fa6ef4ee7c2b23e';
 }
