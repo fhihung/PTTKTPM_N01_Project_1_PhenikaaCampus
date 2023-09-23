@@ -8,6 +8,7 @@
 /phenikaa_campus/.buildlog/
 /phenikaa_campus/.history
 /phenikaa_campus/.svn/
+/phenikaa_campus/.fvm/
 
 # IntelliJ related
 /phenikaa_campus/*.iml
@@ -31,6 +32,7 @@
 /phenikaa_campus/.pub-cache/
 /phenikaa_campus/.pub/
 /phenikaa_campus/build/
+/phenikaa_campus/android/
 **/coverage
 
 # Web related
