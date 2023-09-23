@@ -41,7 +41,7 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
         child: Column(children: [
           Row(
             children: [
-              CircleAvatar(
+                    CircleAvatar(
                 backgroundImage: NetworkImage(),
               )
             ],
