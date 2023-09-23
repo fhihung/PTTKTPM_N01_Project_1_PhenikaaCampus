@@ -32,9 +32,8 @@
 /phenikaa_campus/.pub-cache/
 /phenikaa_campus/.pub/
 /phenikaa_campus/build/
-/phenikaa_campus/android/
 **/coverage
-
+            
 # Web related
 /phenikaa_campus/lib/generated_plugin_registrant.dart
 
