@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
 import 'package:phenikaa_campus/constants/ui_constant.dart';
-import 'package:phenikaa_campus/features/tweet/views/create_tweet_view.dart';
+
 import 'package:phenikaa_campus/theme/theme.dart';
 
 class HomeView extends StatefulWidget {
