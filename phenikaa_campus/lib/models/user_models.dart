@@ -58,7 +58,6 @@ class UserModel {
       'following': following,
       'profilePic': profilePic,
       'bannerPic': bannerPic,
-      'uid': uid,
       'bio': bio,
       'isTwitterBlue': isTwitterBlue,
     };
