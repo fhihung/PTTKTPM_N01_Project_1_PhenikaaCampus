@@ -1,5 +1,3 @@
-import 'dart:html';
-
 // ignore_for_file: use_build_context_synchronously
 import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +25,7 @@ final currentUserDetailsProvider = FutureProvider((ref) {
   return userDetails.value;
 }); //currentUserDetailsProvider
 
-final userDetailsProvider = FutureProviderFamily((ref, String uid) {
+final userDetailsProvider = FutureProvider.family((ref, String uid) {
   final authController = ref.watch(authControllerProvider.notifier);
   return authController.getUserData(uid);
 });  //userDetailsProvider
