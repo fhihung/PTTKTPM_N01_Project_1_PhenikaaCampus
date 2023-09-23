@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phenikaa_campus/common/common.dart';
-import 'package:phenikaa_campus/common/loading_page.dart';
 import 'package:phenikaa_campus/features/auth/controller/auth_controller.dart';
-
+import 'package:phenikaa_campus/features/auth/view/login_view.dart';
 import 'package:phenikaa_campus/features/auth/view/signup_view.dart';
 import 'package:phenikaa_campus/features/home/view/home_view.dart';
 import 'package:phenikaa_campus/theme/theme.dart';
@@ -26,13 +25,11 @@ class MyApp extends ConsumerWidget {
         theme: AppTheme.theme,
         home: ref.watch(currentUserAccountProvider).when(
             data: (user) {
-              // if (user != null) {
-              //   return const HomeView();
-              // } else {
-              //   return const SignUpView();
-              // }
-
-              return const HomeView();
+              if (user != null) {
+                return const LoginView();
+              } else {
+                return const SignUpView();
+              }
             },
             loading: () => const LoadingPage(),
             error: (error, s) {
