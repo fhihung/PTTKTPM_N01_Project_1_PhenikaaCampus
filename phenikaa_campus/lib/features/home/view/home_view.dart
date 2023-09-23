@@ -4,10 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
 import 'package:phenikaa_campus/constants/ui_constant.dart';
+import 'package:phenikaa_campus/features/tweet/views/create_tweet_view.dart';
 import 'package:phenikaa_campus/theme/theme.dart';
 
 class HomeView extends StatefulWidget {
-  static route() => MaterialPageRouter(
+  static route() => MaterialPageRoute(
         builder: (context) => const HomeView(),
       );
   const HomeView({super.key});
@@ -16,10 +17,9 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-MaterialPageRouter({required HomeView Function(dynamic context) builder}) {}
-
 class _HomeViewState extends State<HomeView> {
   int _page = 0;
+  final appBar = UIConstants.appBar();
 
   void onPageChange(int index) {
     setState(() {
@@ -27,14 +27,17 @@ class _HomeViewState extends State<HomeView> {
     });
   }
 
-  final appBar = UIConstants.appBar();
+  onCreateTweet() {
+    // Navigator.push(context, CreateTweetScreen.route());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar,
       body: IndexedStack(index: _page, children: UIConstants.bottomTabBarPages),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: onCreateTweet,
         child: const Icon(
           Icons.add,
           color: Pallete.whiteColor,
