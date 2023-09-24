@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:phenikaa_campus/core/utils.dart';
 import '../../../common/loading_page.dart';
 import '../../../common/rounded_small_button.dart';
 import '../../../constants/assets_constants.dart';
@@ -33,6 +34,12 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
   void shareTweet() {}
 
   void onPickImages() async {
+// Kiểm tra nền tảng và thực hiện hành động tương ứng
+    if (Platform.isAndroid) {
+      images = await pickImageOrImages();
+    } else if (Platform.isIOS) {
+      images = await pickImages();
+    } else {}
     setState(() {});
   }
 
@@ -40,7 +47,6 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
   Widget build(BuildContext context) {
     final currentUser = ref.watch(currentUserDetailsProvider).value;
     final isLoading = false;
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
