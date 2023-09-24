@@ -8,7 +8,6 @@
 /phenikaa_campus/.buildlog/
 /phenikaa_campus/.history
 /phenikaa_campus/.svn/
-/phenikaa_campus/.fvm/
 
 # IntelliJ related
 /phenikaa_campus/*.iml
@@ -33,7 +32,7 @@
 /phenikaa_campus/.pub/
 phenikaa_campus/build
 **/coverage
-            
+
 # Web related
 /phenikaa_campus/lib/generated_plugin_registrant.dart
 

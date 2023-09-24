@@ -1,42 +1,13 @@
 import 'dart:io';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:phenikaa_campus/constants/appwrite_constant.dart';
-
 import '../../../common/loading_page.dart';
 import '../../../common/rounded_small_button.dart';
 import '../../../constants/assets_constants.dart';
 import '../../../theme/pallete.dart';
 import '../../auth/controller/auth_controller.dart';
-
-
-
-///  Dây là đoạn tui dùng hàm get thử đọc trên doc
-import 'package:appwrite/appwrite.dart';
-void main() {
-  // Init SDK
-  Client client = Client();
-  Databases databases = Databases(client);
-
-  client
-          .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-          .setProject("650e5971aa68f5cd661e") // Your project ID
-      ;
-  Future result = databases.getDocument(
-    databaseId: "650f033b32d79de43873",
-    collectionId: "650f03426339595225d4",
-    documentId: "651045619a13a7be4280",
-  );
-
-  result.then((response) {
-    print(response);
-  }).catchError((error) {
-    print(error.response);
-  });
-}
 
 class CreateTweetScreen extends ConsumerStatefulWidget {
   static route() => MaterialPageRoute(
@@ -67,12 +38,7 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
 
   @override
   Widget build(BuildContext context) {
-    main();
-    final currentUserId = ref.watch(currentUserAccountProvider).value!.$id;
-    print(
-        "currentUserId $currentUserId ${ref.watch(currentUserDetailsProvider).error}");
     final currentUser = ref.watch(currentUserDetailsProvider).value;
-    print(currentUser);
     final isLoading = false;
 
     return Scaffold(
@@ -102,7 +68,7 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
                       children: [
                         CircleAvatar(
                           backgroundImage: NetworkImage(currentUser.profilePic),
-                          radius: 30,
+                          radius: 25,
                         ),
                         const SizedBox(width: 15),
                         Expanded(
@@ -161,6 +127,7 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0).copyWith(
+                bottom: 10,
                 left: 15,
                 right: 15,
               ),
@@ -171,6 +138,7 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0).copyWith(
+                bottom: 10,
                 left: 15,
                 right: 15,
               ),
@@ -178,6 +146,7 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0).copyWith(
+                bottom: 10,
                 left: 15,
                 right: 15,
               ),
