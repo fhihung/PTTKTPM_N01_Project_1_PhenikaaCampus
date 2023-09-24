@@ -2,10 +2,16 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:phenikaa_campus/core/enums/tweet_type_enum.dart';
 import 'package:phenikaa_campus/core/utils.dart';
+import 'package:phenikaa_campus/features/auth/controller/auth_controller.dart';
+import 'package:phenikaa_campus/models/tweet_model.dart';
 
 class TweetController extends StateNotifier<bool> {
-  TweetController() : super(false);
+  final Ref _ref;
+  TweetController({required Ref ref})
+      : _ref = ref,
+        super(false);
 
   void shareTweet({
     required List<File> images,
@@ -31,7 +37,26 @@ class TweetController extends StateNotifier<bool> {
   void _shareTextTweet({
     required String text,
     required BuildContext context,
-  }) {}
+  }) {
+    state = true;
+    final hashtags = _getHashtagsFromText(text);
+    String link = _getLinkFromText(text);
+    final user = _ref.read(currentUserDetailsProvider).value;
+    Tweet tweet = Tweet(
+        text: text,
+        hashtags: hashtags,
+        link: link,
+        imageLinks: [],
+        uid: user!.uid,
+        tweetType: TweetType.text,
+        tweetedAt: DateTime.now(),
+        likes: [],
+        commentIds: [],
+        id: "",
+        reshareCount: 0,
+        retweetedBy: "",
+        repliedTo: "");
+  }
 
   String _getLinkFromText(String text) {
     String link = "";
