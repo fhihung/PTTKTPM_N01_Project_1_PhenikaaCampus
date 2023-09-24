@@ -1,5 +1,9 @@
 # Information about project
 
+# Appwrite
+
+Flutter project using appwrite
+
 # Flutter Riverpod
 
 Flutter project using Riverpod state management
@@ -46,6 +50,9 @@ https://user-images.githubusercontent.com/22645452/204954653-a704d380-0f6a-419d-
 - CocoaPods: 1.11.3
 
 ### Install
+
+- Docker 
+  - 
 
 - Install package:
   - Run `flutter pub get`

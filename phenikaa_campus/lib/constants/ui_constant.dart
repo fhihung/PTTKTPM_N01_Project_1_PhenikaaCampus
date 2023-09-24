@@ -9,9 +9,16 @@ class UIConstants {
       title: SvgPicture.asset(
         AssetsConstants.phenikaaLogo,
         height: 40,
-        colorFilter: ColorFilter.mode(Pallete.whiteColor, BlendMode.srcIn),
+        colorFilter:
+            const ColorFilter.mode(Pallete.whiteColor, BlendMode.srcIn),
       ),
       centerTitle: true,
     );
   }
+
+  static List<Widget> bottomTabBarPages = [
+    Text("Feed Screen"),
+    Text("Search Screen"),
+    Text("Notification Screen"),
+  ];
 }
