@@ -35,7 +35,7 @@ class _LoaderState extends State<Loader> {
   }
 
   void stopTimer() {
-    timer?.cancel();
+    timer.cancel();
   }
 
   @override
@@ -47,7 +47,7 @@ class _LoaderState extends State<Loader> {
           CircularProgressIndicator(),
           SizedBox(height: 16.0),
           Text(
-            'Loading' + ('.' * dotCount),
+            'Loading' + (' . ' * dotCount),
             style: TextStyle(fontSize: 16.0),
           ),
         ],
