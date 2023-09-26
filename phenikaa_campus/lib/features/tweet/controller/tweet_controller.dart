@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:phenikaa_campus/apis/storage_api.dart';
 import 'package:phenikaa_campus/apis/tweet_api.dart';
 import 'package:phenikaa_campus/core/enums/tweet_type_enum.dart';
 import 'package:phenikaa_campus/core/utils.dart';
 import 'package:phenikaa_campus/features/auth/controller/auth_controller.dart';
+import 'package:phenikaa_campus/features/home/view/home_view.dart';
 import 'package:phenikaa_campus/models/tweet_model.dart';
 
 final tweetControllerProvider = StateNotifierProvider<TweetController, bool>(
@@ -14,16 +16,22 @@ final tweetControllerProvider = StateNotifierProvider<TweetController, bool>(
     return TweetController(
       ref: ref,
       tweetAPI: ref.watch(tweetAPIProvider),
+      storageAPI: ref.watch(storaegAPIProvider),
     );
   },
 );
 
 class TweetController extends StateNotifier<bool> {
   final TweetAPI _tweetAPI;
+  final StorageAPI _storageAPI;
   final Ref _ref;
-  TweetController({required Ref ref, required TweetAPI tweetAPI})
+  TweetController(
+      {required StorageAPI storageAPI,
+      required Ref ref,
+      required TweetAPI tweetAPI})
       : _ref = ref,
         _tweetAPI = tweetAPI,
+        _storageAPI = storageAPI,
         super(false);
 
   void shareTweet({
@@ -46,7 +54,34 @@ class TweetController extends StateNotifier<bool> {
     required List<File> images,
     required String text,
     required BuildContext context,
-  }) {}
+  }) async {
+    state = true;
+    final hashtags = _getHashtagsFromText(text);
+    final link = _getLinksFromText(text);
+    final user = _ref.read(currentUserDetailsProvider).value;
+    final imageLinks = await _storageAPI.uploadImage(images);
+    Tweet tweet = Tweet(
+        text: text,
+        hashtags: hashtags,
+        link: link,
+        imageLinks: imageLinks,
+        uid: user!.uid,
+        tweetType: TweetType.image,
+        tweetedAt: DateTime.now(),
+        likes: const [],
+        commentIds: const [],
+        id: "",
+        reshareCount: 0,
+        retweetedBy: "",
+        repliedTo: "");
+    final res = await _tweetAPI.shareTweet(tweet);
+    state = false;
+    res.fold((l) => showSnackBar(context, l.message), (r) {
+      showSnackBar(context, 'Tweet created!.');
+      Navigator.push(context, HomeView.route());
+    });
+  }
+
   void _shareTextTweet({
     required String text,
     required BuildContext context,
