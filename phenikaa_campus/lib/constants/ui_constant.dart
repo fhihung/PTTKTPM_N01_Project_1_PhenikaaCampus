@@ -18,8 +18,14 @@ class UIConstants {
   }
 
   static List<Widget> bottomTabBarPages = [
+<<<<<<< Updated upstream
     TweetList(),
     Text("Search Screen"),
     Text("Notification Screen"),
+=======
+    const Text("Feed Screen"),
+    const Text("Search Screen"),
+    const Text("Notification Screen"),
+>>>>>>> Stashed changes
   ];
 }
