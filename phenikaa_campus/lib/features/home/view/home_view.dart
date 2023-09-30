@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
 import 'package:phenikaa_campus/constants/ui_constant.dart';
@@ -28,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
   }
 
   onCreateTweet() {
-    // Navigator.push(context, CreateTweetScreen.route());
+    Navigator.push(context, CreateTweetScreen.route());
   }
 
   @override
