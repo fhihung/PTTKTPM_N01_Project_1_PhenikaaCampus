@@ -22,6 +22,7 @@ class TwitterReplyScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print("object");
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tweet'),
@@ -112,6 +113,8 @@ class TwitterReplyScreen extends ConsumerWidget {
             images: [],
             text: value,
             context: context,
+            repliedTo: '',
+            repliedToUserId: '',
           );
         },
         decoration: const InputDecoration(

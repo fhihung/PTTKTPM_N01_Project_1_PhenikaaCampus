@@ -51,7 +51,7 @@ class TweetCard extends ConsumerWidget {
                               onTap: () {},
                               child: CircleAvatar(
                                 backgroundImage: NetworkImage(user.profilePic),
-                                radius: 35,
+                                radius: 15,
                               ),
                             ),
                           ),
@@ -64,6 +64,7 @@ class TweetCard extends ConsumerWidget {
                                     children: [
                                       SvgPicture.asset(
                                         AssetsConstants.retweetIcon,
+                                        // ignore: deprecated_member_use
                                         color: Pallete.greyColor,
                                         height: 20,
                                       ),
@@ -88,7 +89,7 @@ class TweetCard extends ConsumerWidget {
                                         user.name,
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 19,
+                                          fontSize: 15,
                                         ),
                                       ),
                                     ),
@@ -101,9 +102,9 @@ class TweetCard extends ConsumerWidget {
                                         ),
                                       ),
                                     Text(
-                                      '@${user.name} · ${timeago.format(
+                                      '@${user.name} ${timeago.format(
                                         tweet.tweetedAt,
-                                        locale: 'en_short',
+                                        locale: "en_short",
                                       )}',
                                       style: const TextStyle(
                                         color: Pallete.greyColor,
@@ -158,7 +159,7 @@ class TweetCard extends ConsumerWidget {
                                   AnyLinkPreview(
                                     displayDirection:
                                         UIDirection.uiDirectionHorizontal,
-                                    link: 'https://${tweet.link}',
+                                    link: '${tweet.link}',
                                   ),
                                 ],
                                 Container(
