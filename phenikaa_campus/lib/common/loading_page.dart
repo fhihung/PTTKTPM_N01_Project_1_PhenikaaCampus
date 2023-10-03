@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class Loader extends StatefulWidget {
-  const Loader();
+  const Loader({super.key});
 
   @override
   _LoaderState createState() => _LoaderState();

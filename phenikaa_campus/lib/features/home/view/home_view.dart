@@ -33,16 +33,18 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar,
+      appBar: _page == 0 ? appBar : null,
       body: IndexedStack(index: _page, children: UIConstants.bottomTabBarPages),
-      floatingActionButton: FloatingActionButton(
-        onPressed: onCreateTweet,
-        child: const Icon(
-          Icons.add,
-          color: Pallete.whiteColor,
-          size: 30,
-        ),
-      ),
+      floatingActionButton: _page == 0
+          ? FloatingActionButton(
+              onPressed: onCreateTweet,
+              child: const Icon(
+                Icons.add,
+                color: Pallete.whiteColor,
+                size: 30,
+              ),
+            )
+          : null,
       bottomNavigationBar: CupertinoTabBar(
           currentIndex: _page,
           onTap: onPageChange,
