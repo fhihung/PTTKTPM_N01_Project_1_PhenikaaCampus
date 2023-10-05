@@ -13,12 +13,16 @@ class SearchTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(bottom: 24, right: 24, left: 24),
+        margin: EdgeInsets.only(bottom: 23, right: 24, left: 24),
         child: Row(
           children: [
             CircleAvatar(
-              backgroundImage: NetworkImage(userModel.profilePic),
-              radius: 25, // Kích thước là 50x50, vì radius = 25
+              backgroundColor: Pallete.rhinoDark500,
+              radius: 26,
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(userModel.profilePic),
+                radius: 25, // Kích thước là 50x50, vì radius = 25
+              ),
             ),
             const SizedBox(
               width: 20,

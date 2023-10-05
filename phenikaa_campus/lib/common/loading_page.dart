@@ -58,11 +58,14 @@ class _LoaderState extends State<Loader> {
 }
 
 class LoadingPage extends StatelessWidget {
-  const LoadingPage({super.key});
+  final Color backgroundColor; // Background color passed as a parameter
+
+  const LoadingPage({super.key, required this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      backgroundColor: backgroundColor, // Use the provided background color
       body: Loader(),
     );
   }

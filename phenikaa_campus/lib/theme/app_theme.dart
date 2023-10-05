@@ -5,9 +5,9 @@ import 'theme.dart';
 
 class AppTheme {
   static ThemeData theme = ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: Pallete.backgroundColor,
+    scaffoldBackgroundColor: Pallete.rhinoDark800,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Pallete.backgroundColor,
+      backgroundColor: Pallete.rhinoDark800,
       elevation: 0,
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(

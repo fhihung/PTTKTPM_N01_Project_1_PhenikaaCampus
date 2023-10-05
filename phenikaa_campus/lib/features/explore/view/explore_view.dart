@@ -23,6 +23,8 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
   bool isShowUsers = false;
   bool isImageVisible = true;
 
+  int searchResultsCount = 0; // Initialize with 0 search results
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -41,11 +43,34 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
             Positioned(
               top: 130.0,
               child: Container(
+                // Centered "Results" container
+                child: Center(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 6,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Pallete.whiteColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(24.0),
+                    ),
+                    child: Text(
+                      isShowUsers
+                          ? '$searchResultsCount Results'
+                          : '0 Results', // Display the number of results or "0 Results"
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Pallete.rhinoDark500,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
                 margin: EdgeInsets.symmetric(
                   horizontal: 10.0,
                 ),
                 width: size.width,
-                height: 120,
+                height: 130,
                 decoration: BoxDecoration(
                   gradient: Pallete.cardColor,
                   borderRadius: BorderRadius.circular(24.0),
@@ -78,31 +103,23 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                     fillColor: Pallete.textformfieldColor,
                   ),
                 ),
-
                 // Layer 3: Container with Background Color
               ],
             ),
-
             Positioned(
-              top: 210.0,
+              top: 235.0,
               child: Container(
-                // child: Image.asset(
-                //   AssetsConstants.darkNoContent,
-                //   height: 5,
-                //   width: 5,
-                //   fit: BoxFit.scaleDown,
-                // ),
                 width: size.width,
                 height: size.height,
                 decoration: BoxDecoration(
-                  color: Pallete.backgroundColor,
+                  color: Pallete.rhinoDark700,
                   borderRadius: BorderRadius.circular(24.0),
                 ),
               ),
             ),
             isShowUsers
                 ? Container(
-                    margin: EdgeInsets.only(top: 210),
+                    margin: EdgeInsets.only(top: 230),
                     child: Consumer(
                       builder: (context, ref, child) {
                         // Access the searchUserProvider using ref.watch
@@ -112,18 +129,20 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                         // Handle the different states of the provider
                         return searchUserAsyncValue.when(
                           data: (users) {
-                            if (users == null || users.isEmpty) {
+                            searchResultsCount =
+                                users.length; // Update the search results count
+                            if (users.isEmpty) {
                               Future.delayed(Duration.zero, () {
                                 setState(() {
                                   isShowUsers =
-                                      false; // Set isShowUsers to false if data is null or empty.
+                                      false; // Hide results when no data is available
                                 });
                               });
                             }
                             // Render the UI with the data from the provider
                             // You can use data (a List<UserModel>) here
                             return ListView.builder(
-                              itemCount: users.length,
+                              itemCount: searchResultsCount,
                               itemBuilder: (context, index) {
                                 final user = users[index];
                                 return SearchTile(userModel: user);
@@ -132,7 +151,9 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                           },
                           loading: () {
                             // Render a loading indicator
-                            return const LoadingPage();
+                            return const LoadingPage(
+                              backgroundColor: Pallete.rhinoDark700,
+                            );
                           },
                           error: (error, stackTrace) {
                             // Handle the error
@@ -152,23 +173,30 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                       children: [
                         Image.asset(AssetsConstants.darkNoContent),
                         Center(
-                          child: Text(noSearchFound,
-                              style: TextStyle(
-                                  color: Pallete.whiteColor, fontSize: 28)),
+                          child: Text(
+                            noSearchFound,
+                            style: TextStyle(
+                              color: Pallete.whiteColor,
+                              fontSize: 28,
+                            ),
+                          ),
                         ),
                         Container(
                           margin: EdgeInsets.only(top: 12),
                           child: Center(
-                            child: Text(searchOtherWords,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Pallete.whiteColor,
-                                  fontSize: 14,
-                                )),
+                            child: Text(
+                              searchOtherWords,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Pallete.whiteColor,
+                                fontSize: 14,
+                              ),
+                            ),
                           ),
                         ),
                       ],
-                    ))
+                    ),
+                  )
                 : SizedBox(),
           ],
         ),
