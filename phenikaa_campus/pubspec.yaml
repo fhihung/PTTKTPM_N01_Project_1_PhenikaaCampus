@@ -41,6 +41,7 @@ dependencies:
   carousel_slider: ^4.2.1
   image_picker: ^1.0.4
   image_picker_android: ^0.8.8+1
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:

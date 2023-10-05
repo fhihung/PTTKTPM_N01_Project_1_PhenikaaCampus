@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Pallete {
+  //dark mode
   static const Color backgroundColor = Color.fromRGBO(20, 27, 39, 1);
   static const Color secondaryColor = Color.fromRGBO(29, 40, 58, 1);
   static const Color searchBarColor = Color.fromRGBO(32, 35, 39, 1);
@@ -9,6 +10,7 @@ class Pallete {
   static const Color greyColor = Colors.grey;
   static const Color redColor = Color.fromRGBO(249, 25, 127, 1);
   static const Color textformfieldColor = Color.fromRGBO(39, 54, 78, 1);
+  static const Color subTextColor = Color.fromRGBO(131, 143, 160, 1);
 
   //Linear Gradient
   static const LinearGradient cardColor = LinearGradient(

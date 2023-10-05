@@ -5,15 +5,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../theme/theme.dart';
 
 class TextFormFieldCustom extends StatelessWidget {
+  final TextEditingController controller;
   final String hintText;
   final Color fillColor;
   final SvgPicture prefixIcon;
+  final Function(String) onChanged;
 
   const TextFormFieldCustom({
     Key? key,
     required this.hintText,
     required this.fillColor,
     required this.prefixIcon,
+    required this.controller,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -22,6 +26,8 @@ class TextFormFieldCustom extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 24),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
       child: TextFormField(
+        onChanged: onChanged,
+        controller: controller,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20, 16, 16, 20),
           prefixIcon: prefixIcon,
