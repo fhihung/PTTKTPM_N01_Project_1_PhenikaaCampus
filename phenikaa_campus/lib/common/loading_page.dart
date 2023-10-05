@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Loader extends StatefulWidget {
@@ -10,7 +11,7 @@ class Loader extends StatefulWidget {
 }
 
 class _LoaderState extends State<Loader> {
-  int dotCount = 1;
+  int dotCount = 3;
   late Timer timer;
 
   @override
@@ -28,9 +29,9 @@ class _LoaderState extends State<Loader> {
   void startTimer() {
     const duration = Duration(milliseconds: 500);
     timer = Timer.periodic(duration, (Timer t) {
-      setState(() {
-        dotCount = (dotCount % 3) + 1;
-      });
+      // setState(() {
+      //   dotCount = (dotCount % 3) + 1;
+      // });
     });
   }
 
@@ -44,7 +45,7 @@ class _LoaderState extends State<Loader> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircularProgressIndicator(),
+          CupertinoActivityIndicator(),
           SizedBox(height: 16.0),
           Text(
             'Loading' + (' . ' * dotCount),

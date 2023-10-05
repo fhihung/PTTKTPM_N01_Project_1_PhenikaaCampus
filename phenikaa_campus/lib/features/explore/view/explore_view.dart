@@ -21,6 +21,7 @@ class ExploreView extends ConsumerStatefulWidget {
 class _ExploreViewState extends ConsumerState<ExploreView> {
   final searchController = TextEditingController();
   bool isShowUsers = false;
+  bool isImageVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +86,12 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
             Positioned(
               top: 210.0,
               child: Container(
+                // child: Image.asset(
+                //   AssetsConstants.darkNoContent,
+                //   height: 5,
+                //   width: 5,
+                //   fit: BoxFit.scaleDown,
+                // ),
                 width: size.width,
                 height: size.height,
                 decoration: BoxDecoration(
@@ -105,6 +112,14 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                         // Handle the different states of the provider
                         return searchUserAsyncValue.when(
                           data: (users) {
+                            if (users == null || users.isEmpty) {
+                              Future.delayed(Duration.zero, () {
+                                setState(() {
+                                  isShowUsers =
+                                      false; // Set isShowUsers to false if data is null or empty.
+                                });
+                              });
+                            }
                             // Render the UI with the data from the provider
                             // You can use data (a List<UserModel>) here
                             return ListView.builder(
@@ -129,7 +144,32 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                       },
                     ),
                   )
-                : const SizedBox(),
+                : SizedBox(),
+            !isShowUsers
+                ? Container(
+                    margin: EdgeInsets.only(top: 300, left: 28, right: 28),
+                    child: Column(
+                      children: [
+                        Image.asset(AssetsConstants.darkNoContent),
+                        Center(
+                          child: Text(noSearchFound,
+                              style: TextStyle(
+                                  color: Pallete.whiteColor, fontSize: 28)),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 12),
+                          child: Center(
+                            child: Text(searchOtherWords,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Pallete.whiteColor,
+                                  fontSize: 14,
+                                )),
+                          ),
+                        ),
+                      ],
+                    ))
+                : SizedBox(),
           ],
         ),
       ),

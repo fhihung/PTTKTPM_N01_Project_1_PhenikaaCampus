@@ -44,42 +44,5 @@ class SearchTile extends StatelessWidget {
             ),
           ],
         ));
-    //   ListTile(
-    //     // onTap: () {
-    //     //   Navigator.push(
-    //     //     context,
-    //     //     UserProfileView.route(userModel),
-    //     //   );
-    //     // },
-    //     leading: CircleAvatar(
-    //       backgroundImage: NetworkImage(userModel.profilePic),
-    //       radius: 30,
-    //     ),
-    //     title: Text(
-    //       userModel.name,
-    //       style: const TextStyle(
-    //         fontSize: 18,
-    //         fontWeight: FontWeight.w600,
-    //       ),
-    //     ),
-    //     subtitle: Column(
-    //       crossAxisAlignment: CrossAxisAlignment.start,
-    //       children: [
-    //         Text(
-    //           '@${userModel.name}',
-    //           style: const TextStyle(
-    //             fontSize: 16,
-    //             color: Pallete.whiteColor,
-    //           ),
-    //         ),
-    //         Text(
-    //           userModel.bio,
-    //           style: const TextStyle(
-    //             color: Pallete.whiteColor,
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //   );
   }
 }

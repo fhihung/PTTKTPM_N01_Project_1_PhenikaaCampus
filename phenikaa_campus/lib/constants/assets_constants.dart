@@ -19,4 +19,8 @@ class AssetsConstants {
   static const String phenikaaLogo = '$_svgsPath/phenikaa_logo.svg';
   static const String profileIcon = '$_svgsPath/profile.svg';
   static const String darkBlur = '$_pngPath/dark_blur_ornament.png';
+  static const String darkNoContent = '$_pngPath/dark_no_content.png';
+
+  //Light Theme
+  static const String lightNoSearch = '$_svgsPath/light_no_search.svg';
 }
