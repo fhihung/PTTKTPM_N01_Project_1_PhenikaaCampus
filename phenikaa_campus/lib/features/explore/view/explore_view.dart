@@ -43,45 +43,26 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
             Positioned(
               top: 130.0,
               child: Container(
-                // Centered "Results" container
-                child: Center(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Pallete.whiteColor.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(24.0),
-                    ),
-                    child: Text(
-                      isShowUsers
-                          ? '$searchResultsCount Results'
-                          : '0 Results', // Display the number of results or "0 Results"
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Pallete.rhinoDark500,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ),
                 margin: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
+                    // horizontal: 10.0,
+                    ),
                 width: size.width,
-                height: 130,
+                height: size.height * 0.8,
                 decoration: BoxDecoration(
                   gradient: Pallete.cardColor,
                   borderRadius: BorderRadius.circular(24.0),
                 ),
               ),
             ),
+            Positioned.fill(
+                top: size.height * 0.068,
+                child: const Align(
+                    alignment: Alignment.topCenter, child: Text('Search'))),
             // Layer 2: Column with TextFormFieldCustom
             Column(
               children: [
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 100),
+                  margin: EdgeInsets.symmetric(vertical: size.height * 0.12),
                   child: TextFormFieldCustom(
                     onChanged: (value) {
                       setState(() {
@@ -119,7 +100,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
             ),
             isShowUsers
                 ? Container(
-                    margin: EdgeInsets.only(top: 230),
+                    margin: EdgeInsets.only(top: 180),
                     child: Consumer(
                       builder: (context, ref, child) {
                         // Access the searchUserProvider using ref.watch
@@ -129,8 +110,9 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                         // Handle the different states of the provider
                         return searchUserAsyncValue.when(
                           data: (users) {
-                            searchResultsCount =
-                                users.length; // Update the search results count
+                            // Update the search results count
+                            searchResultsCount = users.length;
+
                             if (users.isEmpty) {
                               Future.delayed(Duration.zero, () {
                                 setState(() {
@@ -141,19 +123,48 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                             }
                             // Render the UI with the data from the provider
                             // You can use data (a List<UserModel>) here
-                            return ListView.builder(
-                              itemCount: searchResultsCount,
-                              itemBuilder: (context, index) {
-                                final user = users[index];
-                                return SearchTile(userModel: user);
-                              },
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Center(
+                                  child: Container(
+                                    margin: EdgeInsets.only(bottom: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16.0,
+                                      vertical: 6,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color:
+                                          Pallete.whiteColor.withOpacity(0.5),
+                                      borderRadius: BorderRadius.circular(24.0),
+                                    ),
+                                    child: Text(
+                                      searchResultsCount > 0
+                                          ? '$searchResultsCount Results'
+                                          : '0 Results',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: Pallete.rhinoDark500,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: ListView.builder(
+                                    itemCount: searchResultsCount,
+                                    itemBuilder: (context, index) {
+                                      final user = users[index];
+                                      return SearchTile(userModel: user);
+                                    },
+                                  ),
+                                ),
+                              ],
                             );
                           },
                           loading: () {
                             // Render a loading indicator
-                            return const LoadingPage(
-                              backgroundColor: Pallete.rhinoDark700,
-                            );
+                            return const Loader();
                           },
                           error: (error, stackTrace) {
                             // Handle the error
@@ -198,6 +209,31 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                     ),
                   )
                 : SizedBox(),
+            // !isShowUsers
+            //     ? Center(
+            //         child: Container(
+            //           margin: EdgeInsets.only(bottom: 61),
+            //           padding: const EdgeInsets.symmetric(
+            //             horizontal: 16.0,
+            //             vertical: 6,
+            //           ),
+            //           decoration: BoxDecoration(
+            //             color: Pallete.whiteColor.withOpacity(0.5),
+            //             borderRadius: BorderRadius.circular(24.0),
+            //           ),
+            //           child: Text(
+            //             searchResultsCount > 0
+            //                 ? '$searchResultsCount Results'
+            //                 : '0 Results',
+            //             style: TextStyle(
+            //               fontSize: 16,
+            //               color: Pallete.rhinoDark500,
+            //               fontWeight: FontWeight.w500,
+            //             ),
+            //           ),
+            //         ),
+            //       )
+            //     : SizedBox(),
           ],
         ),
       ),

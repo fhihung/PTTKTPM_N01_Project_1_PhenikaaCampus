@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Pallete {
   //dark mode
@@ -14,6 +15,8 @@ class Pallete {
   static const Color rhinoDark700 = Color.fromRGBO(29, 40, 58, 1);
   static const Color rhinoDark800 = Color.fromRGBO(20, 27, 39, 1);
   static const Color rhinoDark600 = Color.fromRGBO(39, 54, 78, 1);
+  final titleColorProvider =
+      StateProvider<Color>((ref) => Pallete.rhinoDark800);
 
   //Linear Gradient
   static const LinearGradient cardColor = LinearGradient(
