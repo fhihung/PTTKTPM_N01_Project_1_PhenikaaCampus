@@ -67,7 +67,7 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
         actions: [
           RoundedSmallButton(
             onTap: shareTweet,
-            label: 'Tweet',
+            text: 'Tweet',
             backgroundColor: Pallete.blueColor,
             textColor: Pallete.whiteColor,
           ),

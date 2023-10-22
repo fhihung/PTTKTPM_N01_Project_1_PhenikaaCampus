@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:phenikaa_campus/common/common.dart';
 import 'package:phenikaa_campus/common/loading_page.dart';
 import 'package:phenikaa_campus/features/auth/controller/auth_controller.dart';
+import 'package:phenikaa_campus/features/user_profile/widget/follow_count.dart';
 import 'package:phenikaa_campus/theme/pallete.dart';
 import '../ controller/color_controller.dart';
 import '../../../models/user_models.dart';
@@ -124,25 +126,54 @@ class UserProfile extends ConsumerWidget {
                         ),
                       ),
                       Positioned(
-                        bottom: collapsedHeight - 40,
-                        left: size.width * 0.08,
+                        bottom: collapsedHeight + 52,
+                        left: size.width * 0.39,
                         child: Text(
                           user.name,
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(
+                            color: Pallete.rhinoDark600,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                       Positioned(
-                        bottom: collapsedHeight + 50,
-                        left: size.width * 0.77,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Pallete.rhinoDark600,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: Text('Follow'),
+                        bottom: collapsedHeight + 10,
+                        right: size.width * 0.06,
+                        child: Row(
+                          children: [
+                            FollowCount(
+                                count: user.following.length,
+                                text: 'Following'),
+                            const SizedBox(width: 18),
+                            FollowCount(
+                                count: user.followers.length,
+                                text: 'Followers'),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        left: size.width * 0.08,
+                        bottom: collapsedHeight - 60,
+                        child: Row(
+                          children: [
+                            RoundedSmallButton(
+                                text: 'Message',
+                                backgroundColor: Pallete.rhinoDark600,
+                                onTap: () {}),
+                            const SizedBox(width: 18),
+                            RoundedSmallButton(
+                                text: currentUser.uid == user.uid
+                                    ? 'Edit Profile'
+                                    : 'Follow',
+                                backgroundColor: Pallete.rhinoDark600,
+                                onTap: () {}),
+                            SizedBox(width: 18),
+                            RoundedSmallButton(
+                                text: '...',
+                                backgroundColor: Pallete.rhinoDark600,
+                                onTap: () {})
+                          ],
                         ),
                       )
                     ],
