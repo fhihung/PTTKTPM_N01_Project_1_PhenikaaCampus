@@ -37,6 +37,8 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
           images: images,
           text: tweetTextController.text,
           context: context,
+          repliedTo: '',
+          repliedToUserId: '',
         );
   }
 
@@ -65,7 +67,7 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
         actions: [
           RoundedSmallButton(
             onTap: shareTweet,
-            label: 'Tweet',
+            text: 'Tweet',
             backgroundColor: Pallete.blueColor,
             textColor: Pallete.whiteColor,
           ),
