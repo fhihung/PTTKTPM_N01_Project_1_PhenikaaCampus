@@ -48,6 +48,7 @@ dependencies:
   flutter_flushbar: ^0.0.2
   permission_handler: ^11.0.1
   baseflow_plugin_template: ^2.1.2
+  zoom_widget: ^2.0.1
 
 dev_dependencies:
   flutter_test:
