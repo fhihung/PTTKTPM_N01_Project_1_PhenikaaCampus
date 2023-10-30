@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
 import 'package:phenikaa_campus/constants/ui_constant.dart';
@@ -28,38 +27,42 @@ class _HomeViewState extends State<HomeView> {
   }
 
   onCreateTweet() {
-    // Navigator.push(context, CreateTweetScreen.route());
+    Navigator.push(context, CreateTweetScreen.route());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar,
+      appBar: _page == 0 ? appBar : null,
       body: IndexedStack(index: _page, children: UIConstants.bottomTabBarPages),
-      floatingActionButton: FloatingActionButton(
-        onPressed: onCreateTweet,
-        child: const Icon(
-          Icons.add,
-          color: Pallete.whiteColor,
-          size: 30,
-        ),
-      ),
+      floatingActionButton: _page == 0
+          ? FloatingActionButton(
+              onPressed: onCreateTweet,
+              child: const Icon(
+                Icons.add,
+                color: Pallete.whiteColor,
+                size: 30,
+              ),
+            )
+          : null,
       bottomNavigationBar: CupertinoTabBar(
           currentIndex: _page,
           onTap: onPageChange,
-          backgroundColor: Pallete.backgroundColor,
+          backgroundColor: Pallete.rhinoDark800,
           items: [
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
               _page == 0
                   ? AssetsConstants.homeFilledIcon
                   : AssetsConstants.homeOutlinedIcon,
-              color: Pallete.whiteColor,
+              colorFilter:
+                  const ColorFilter.mode(Pallete.whiteColor, BlendMode.srcIn),
             )),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 AssetsConstants.searchIcon,
-                color: Pallete.whiteColor,
+                colorFilter:
+                    const ColorFilter.mode(Pallete.whiteColor, BlendMode.srcIn),
               ),
             ),
             BottomNavigationBarItem(
@@ -67,7 +70,8 @@ class _HomeViewState extends State<HomeView> {
                 _page == 2
                     ? AssetsConstants.notifFilledIcon
                     : AssetsConstants.notifOutlinedIcon,
-                color: Pallete.whiteColor,
+                colorFilter:
+                    const ColorFilter.mode(Pallete.whiteColor, BlendMode.srcIn),
               ),
             ),
           ]),
