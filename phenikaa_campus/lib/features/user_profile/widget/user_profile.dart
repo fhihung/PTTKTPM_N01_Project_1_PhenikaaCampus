@@ -126,7 +126,7 @@ class UserProfile extends ConsumerWidget {
                         ),
                       ),
                       Positioned(
-                        bottom: collapsedHeight + 52,
+                        bottom: collapsedHeight + 55,
                         left: size.width * 0.39,
                         child: Text(
                           user.name,
@@ -185,7 +185,7 @@ class UserProfile extends ConsumerWidget {
                   child: Container(
                     height: 200,
                     color: i % 2 == 0
-                        ? Pallete.rhinoDark700
+                        ? Pallete.rhinoDark500
                         : Pallete.rhinoDark700,
                   ),
                 )
