@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
 import 'package:phenikaa_campus/features/explore/view/explore_view.dart';
+import 'package:phenikaa_campus/features/tweet/views/list_posts_view.dart';
 import 'package:phenikaa_campus/features/tweet/widgets/tweet_list.dart';
 import 'package:phenikaa_campus/theme/pallete.dart';
 
@@ -21,7 +22,7 @@ class UIConstants {
 
   static List<Widget> bottomTabBarPages = [
     // const Text("Feed Screen"),
-    const TweetList(),
+    const NewPostsList(),
     // const Text("Search Screen"),
     const ExploreView(),
     // const UserProfileView(),
