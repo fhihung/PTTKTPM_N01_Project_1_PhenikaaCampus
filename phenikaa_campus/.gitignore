@@ -31,6 +31,7 @@
 /phenikaa_campus/.pub-cache/
 /phenikaa_campus/.pub/
 /phenikaa_campus/build/
+.idea/
 **/coverage
 
 # Web related
