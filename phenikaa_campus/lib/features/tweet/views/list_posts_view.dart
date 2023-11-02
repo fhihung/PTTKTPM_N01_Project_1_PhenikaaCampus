@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:phenikaa_campus/constants/constants.dart';
 import 'package:phenikaa_campus/features/explore/widget/text_form_field_custom.dart';
+import 'package:phenikaa_campus/features/tweet/views/create_tweet_view.dart';
+import 'package:phenikaa_campus/features/tweet/widgets/tweet_list.dart';
 import 'package:phenikaa_campus/theme/pallete.dart';
 
 class NewPostsList extends ConsumerStatefulWidget {
@@ -13,6 +15,10 @@ class NewPostsList extends ConsumerStatefulWidget {
 }
 
 class _NewPostsListState extends ConsumerState<NewPostsList> {
+  void onCreateTweet() {
+    Navigator.push(context, CreateTweetScreen.route());
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -26,9 +32,7 @@ class _NewPostsListState extends ConsumerState<NewPostsList> {
             Positioned(
               top: 10,
               child: Container(
-                margin: EdgeInsets.symmetric(
-                    // horizontal: 10.0,
-                    ),
+                margin: EdgeInsets.symmetric(),
                 width: size.width,
                 height: size.height * 0.8,
                 decoration: BoxDecoration(
@@ -50,53 +54,31 @@ class _NewPostsListState extends ConsumerState<NewPostsList> {
             ),
             Column(
               children: [
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: size.height * 0.12),
-                  child: TextFormFieldCustom(
-                    onChanged: (value) {
-                      setState(() {});
-                    },
-                    controller: SearchController(),
-                    prefixIcon: SvgPicture.asset(
-                      AssetsConstants.searchIcon,
-                      height: 5,
-                      width: 5,
-                      fit: BoxFit.scaleDown,
-                      colorFilter: const ColorFilter.mode(
-                        Pallete.whiteColor,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    hintText: "How are you today?",
-                    fillColor: Pallete.textformfieldColor,
-                  ),
-                ),
-              ],
-            ),
-
-            // Quang is coding
-            Stack(
-              children: [
-                Align(
-                  alignment: Alignment.center,
+                GestureDetector(
+                  onTap: onCreateTweet,
                   child: Container(
-                    padding: EdgeInsets.all(16.0),
+                    margin: EdgeInsets.symmetric(
+                        vertical: size.height * 0.05, horizontal: 40),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 2.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
+                      color: Pallete.rhinoDark700,
+                      borderRadius: BorderRadius.circular(24.0),
                     ),
-                    child: Text(
-                      "How are you today?",
-                      style: TextStyle(fontSize: 16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.create),
+                        Text("How are you today?"),
+                      ],
                     ),
                   ),
                 ),
-                ListView()
               ],
             ),
+            Container(
+              margin: EdgeInsets.only(top: 180),
+              child: TweetList(),
+            )
           ],
         ),
       ),
