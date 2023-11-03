@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:phenikaa_campus/common/common.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
 import 'package:phenikaa_campus/constants/ui_constant.dart';
+import 'package:phenikaa_campus/features/auth/view/login_view.dart';
 import 'package:phenikaa_campus/features/auth/widgets/auth_field.dart';
 import 'package:phenikaa_campus/theme/theme.dart';
 
@@ -151,7 +152,10 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                                           ),
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () {
-                                              Navigator.pop(context);
+                                              Navigator.push(
+                                                context,
+                                                LoginView.route(),
+                                              );
                                             },
                                         ),
                                       ],

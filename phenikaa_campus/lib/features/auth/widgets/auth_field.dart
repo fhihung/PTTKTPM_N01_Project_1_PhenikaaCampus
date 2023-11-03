@@ -38,11 +38,20 @@ class _AuthFieldState extends State<AuthField> {
     });
   }
 
+  void trimText() {
+    final trimmedText = widget.controller.text.trim();
+    if (widget.controller.text != trimmedText) {
+      widget.controller.text = trimmedText;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
       obscureText: _obscureText,
+      onEditingComplete:
+          trimText, // Add this line to trim the text when editing is complete
       decoration: InputDecoration(
         filled: true,
         fillColor: Pallete.rhinoDark700,

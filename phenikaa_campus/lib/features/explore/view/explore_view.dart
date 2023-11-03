@@ -55,9 +55,12 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
               ),
             ),
             Positioned.fill(
-                top: size.height * 0.068,
-                child: const Align(
-                    alignment: Alignment.topCenter, child: Text('Search'))),
+              top: size.height * 0.068,
+              child: const Align(
+                alignment: Alignment.topCenter,
+                child: Text('Search'),
+              ),
+            ),
             // Layer 2: Column with TextFormFieldCustom
             Column(
               children: [

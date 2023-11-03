@@ -64,6 +64,15 @@ class _HomeViewState extends State<HomeView> {
                   const ColorFilter.mode(Pallete.whiteColor, BlendMode.srcIn),
             ),
           ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              _page == 3
+                  ? AssetsConstants.profileIcon
+                  : AssetsConstants.profileIcon,
+              colorFilter:
+                  const ColorFilter.mode(Pallete.whiteColor, BlendMode.srcIn),
+            ),
+          ),
         ],
       ),
     );
