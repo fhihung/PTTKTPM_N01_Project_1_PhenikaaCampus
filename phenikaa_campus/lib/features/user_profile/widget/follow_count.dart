@@ -20,7 +20,7 @@ class FollowCount extends StatelessWidget {
         Text(
           '$count',
           style: TextStyle(
-            color: Pallete.whiteColor,
+            color: Palette.whiteColor,
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
           ),
@@ -29,7 +29,7 @@ class FollowCount extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-            color: Pallete.greyColor,
+            color: Palette.greyColor,
             fontSize: fontSize,
           ),
         ),

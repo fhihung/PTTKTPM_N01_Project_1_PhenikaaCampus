@@ -83,7 +83,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                             TextSpan(
                               text: ' Sign up',
                               style: const TextStyle(
-                                color: Pallete.blueColor,
+                                color: Palette.blueColor,
                                 fontSize: 16,
                               ),
                               recognizer: TapGestureRecognizer()

@@ -3,21 +3,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:phenikaa_campus/constants/constants.dart';
 import 'package:phenikaa_campus/features/explore/widget/text_form_field_custom.dart';
+import 'package:phenikaa_campus/features/notification/view/notification_view.dart';
 import 'package:phenikaa_campus/features/tweet/views/create_tweet_view.dart';
 import 'package:phenikaa_campus/features/tweet/widgets/tweet_list.dart';
 import 'package:phenikaa_campus/theme/pallete.dart';
 
-class NewPostsList extends ConsumerStatefulWidget {
+class NotificationsList extends ConsumerStatefulWidget {
   static route() => MaterialPageRoute(
-        builder: (context) => const NewPostsList(),
+        builder: (context) => const NotificationsList(),
       );
-  const NewPostsList({super.key});
+  const NotificationsList({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _NewPostsListState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _NotificationsListState();
 }
 
-class _NewPostsListState extends ConsumerState<NewPostsList> {
+class _NotificationsListState extends ConsumerState<NotificationsList> {
   void onCreateTweet() {
     Navigator.push(context, CreateTweetScreen.route());
   }
@@ -40,7 +42,7 @@ class _NewPostsListState extends ConsumerState<NewPostsList> {
                 width: size.width,
                 height: size.height * 0.8,
                 decoration: BoxDecoration(
-                  gradient: Palette.cardColor,
+                  color: Palette.rhinoDark700,
                   borderRadius: BorderRadius.circular(24.0),
                 ),
               ),
@@ -51,34 +53,19 @@ class _NewPostsListState extends ConsumerState<NewPostsList> {
                 width: size.width,
                 height: size.height,
                 decoration: BoxDecoration(
-                  color: Palette.rhinoDark700,
+                  gradient: Palette.cardColor,
                   borderRadius: BorderRadius.circular(24.0),
                 ),
               ),
             ),
-            Column(
-              children: [
-                GestureDetector(
-                  onTap: onCreateTweet,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(
-                        vertical: size.height * 0.035, horizontal: 60),
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    decoration: BoxDecoration(
-                      color: Palette.subTextColor,
-                      borderRadius: BorderRadius.circular(24.0),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.create),
-                        Text("How are you today?"),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            Positioned.fill(
+              top: size.height * 0.068,
+              child: const Align(
+                alignment: Alignment.topCenter,
+                child: Text('Notifications'),
+              ),
             ),
+
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.0),
@@ -88,7 +75,7 @@ class _NewPostsListState extends ConsumerState<NewPostsList> {
                 left: 10,
                 right: 10,
               ),
-              child: TweetList(),
+              child: NotificationView(),
             )
           ],
         ),

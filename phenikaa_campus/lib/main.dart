@@ -31,7 +31,7 @@ class MyApp extends ConsumerWidget {
               }
             },
             loading: () => const LoadingPage(
-                  backgroundColor: Pallete.rhinoDark500,
+                  backgroundColor: Palette.rhinoDark500,
                 ),
             error: (error, s) {
               return ErrorText(

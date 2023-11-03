@@ -25,7 +25,7 @@ class SearchTile extends StatelessWidget {
           child: Row(
             children: [
               CircleAvatar(
-                backgroundColor: Pallete.rhinoDark500,
+                backgroundColor: Palette.rhinoDark500,
                 radius: 26,
                 child: CircleAvatar(
                   backgroundImage: NetworkImage(userModel.profilePic),
@@ -49,7 +49,7 @@ class SearchTile extends StatelessWidget {
                     '@${userModel.name}',
                     style: const TextStyle(
                       fontSize: 12,
-                      color: Pallete.subTextColor,
+                      color: Palette.subTextColor,
                     ),
                   ),
                 ],

@@ -46,11 +46,11 @@ class UserProfile extends ConsumerWidget {
       if (_scrollController.offset > threshold) {
         ref
             .read(colorNotifierProvider.notifier)
-            .changeColor(Pallete.yellow500); // Change to your desired color
+            .changeColor(Palette.yellow500); // Change to your desired color
       } else {
         ref
             .read(colorNotifierProvider.notifier)
-            .changeColor(Pallete.rhinoDark800);
+            .changeColor(Palette.rhinoDark800);
       }
     });
 
@@ -88,7 +88,7 @@ class UserProfile extends ConsumerWidget {
                     );
                   },
                 ),
-                backgroundColor: Pallete.rhinoDark700,
+                backgroundColor: Palette.rhinoDark700,
                 flexibleSpace: FlexibleSpaceBar(
                   titlePadding: EdgeInsets.only(left: size.width * 0.08),
                   centerTitle: true,
@@ -101,7 +101,7 @@ class UserProfile extends ConsumerWidget {
                           child: user.bannerPic.isEmpty
                               ? Container(
                                   decoration: BoxDecoration(
-                                  gradient: Pallete.cardColor,
+                                  gradient: Palette.cardColor,
                                 ))
                               : Image.network(
                                   user.bannerPic,
@@ -116,7 +116,7 @@ class UserProfile extends ConsumerWidget {
                         child: Container(
                           padding: EdgeInsets.all(5),
                           decoration: ShapeDecoration(
-                            color: Pallete.rhinoDark600,
+                            color: Palette.rhinoDark600,
                             shape: CircleBorder(),
                           ),
                           child: CircleAvatar(
@@ -131,7 +131,7 @@ class UserProfile extends ConsumerWidget {
                         child: Text(
                           user.name,
                           style: TextStyle(
-                            color: Pallete.rhinoDark600,
+                            color: Palette.rhinoDark600,
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
                           ),
@@ -159,19 +159,19 @@ class UserProfile extends ConsumerWidget {
                           children: [
                             RoundedSmallButton(
                                 text: 'Message',
-                                backgroundColor: Pallete.rhinoDark600,
+                                backgroundColor: Palette.rhinoDark600,
                                 onTap: () {}),
                             const SizedBox(width: 18),
                             RoundedSmallButton(
                                 text: currentUser.uid == user.uid
                                     ? 'Edit Profile'
                                     : 'Follow',
-                                backgroundColor: Pallete.rhinoDark600,
+                                backgroundColor: Palette.rhinoDark600,
                                 onTap: () {}),
                             SizedBox(width: 18),
                             RoundedSmallButton(
                                 text: '...',
-                                backgroundColor: Pallete.rhinoDark600,
+                                backgroundColor: Palette.rhinoDark600,
                                 onTap: () {})
                           ],
                         ),
@@ -185,8 +185,8 @@ class UserProfile extends ConsumerWidget {
                   child: Container(
                     height: 200,
                     color: i % 2 == 0
-                        ? Pallete.rhinoDark700
-                        : Pallete.rhinoDark700,
+                        ? Palette.rhinoDark700
+                        : Palette.rhinoDark700,
                   ),
                 )
             ],
