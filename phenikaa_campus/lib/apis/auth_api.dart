@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 import 'package:fpdart/fpdart.dart';
@@ -91,23 +89,31 @@ class AuthAPI implements IAuthAPI {
       );
     }
   }
-
+  
   @override
-  Future<Either<Failure, void>> logout() async {
-    try {
-      await _account.deleteSession(
-        sessionId: "current",
-      );
-      return right(null);
-    } on AppwriteException catch (e, stackTrace) {
-      Failure(
-          e.message ??
-              "Some unexpected error occurred. - Một số lỗi không mong muốn!",
-          stackTrace);
-    } catch (e, stackTrace) {
-      return left(
-        Failure(e.toString(), stackTrace),
-      );
-    }
+  FutureEitherVoid logout() {
+    // TODO: implement logout
+    throw UnimplementedError();
   }
+
+  // @override
+  // FutureEitherVoid logout() async {
+  //   try {
+  //     await _account.deleteSession(
+  //       sessionId: "current",
+  //     );
+  //     return right(null);
+  //   } on AppwriteException catch (e, stackTrace) {
+  //     Failure(
+  //         e.message ??
+  //             "Some unexpected error occurred. - Một số lỗi không mong muốn!",
+  //         stackTrace);
+  //   } catch (e, stackTrace) {
+  //     return left(
+  //       Failure(e.toString(), stackTrace),
+  //     );
+  //   }
+  // }
+
+
 }

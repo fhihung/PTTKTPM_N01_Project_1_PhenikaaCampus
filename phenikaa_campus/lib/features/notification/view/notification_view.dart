@@ -23,7 +23,6 @@ class NotificationView extends ConsumerWidget {
           ? const Loader()
           : ref.watch(getNotificationsProvider(currentUser.uid)).when(
                 data: (notifications) {
-                  print("$notifications ");
                   return ref.watch(getLatestNotificationProvider).when(
                         data: (data) {
                           if (data.events.contains(
