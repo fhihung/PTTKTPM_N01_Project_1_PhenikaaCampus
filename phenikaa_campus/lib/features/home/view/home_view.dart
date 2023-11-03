@@ -40,7 +40,7 @@ class _HomeViewState extends State<HomeView> {
       bottomNavigationBar: CupertinoTabBar(
         currentIndex: _page,
         onTap: onPageChange,
-        backgroundColor: Palette.rhinoDark800,
+        backgroundColor: Pallete.rhinoDark800,
         items: [
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -48,13 +48,13 @@ class _HomeViewState extends State<HomeView> {
                 ? AssetsConstants.homeFilledIcon
                 : AssetsConstants.homeOutlinedIcon,
             colorFilter:
-                const ColorFilter.mode(Palette.whiteColor, BlendMode.srcIn),
+                const ColorFilter.mode(Pallete.whiteColor, BlendMode.srcIn),
           )),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               AssetsConstants.searchIcon,
               colorFilter:
-                  const ColorFilter.mode(Palette.whiteColor, BlendMode.srcIn),
+                  const ColorFilter.mode(Pallete.whiteColor, BlendMode.srcIn),
             ),
           ),
           BottomNavigationBarItem(
@@ -63,7 +63,7 @@ class _HomeViewState extends State<HomeView> {
                   ? AssetsConstants.notifFilledIcon
                   : AssetsConstants.notifOutlinedIcon,
               colorFilter:
-                  const ColorFilter.mode(Palette.whiteColor, BlendMode.srcIn),
+                  const ColorFilter.mode(Pallete.whiteColor, BlendMode.srcIn),
             ),
           ),
         ],

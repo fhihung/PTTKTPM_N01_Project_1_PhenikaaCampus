@@ -26,7 +26,7 @@ class _NewPostsListState extends ConsumerState<NewPostsList> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Palette.blackColor,
+      backgroundColor: Pallete.blackColor,
       body: SizedBox(
         width: size.width,
         height: size.height,
@@ -40,7 +40,7 @@ class _NewPostsListState extends ConsumerState<NewPostsList> {
                 width: size.width,
                 height: size.height * 0.8,
                 decoration: BoxDecoration(
-                  gradient: Palette.cardColor,
+                  gradient: Pallete.cardColor,
                   borderRadius: BorderRadius.circular(24.0),
                 ),
               ),
@@ -51,7 +51,7 @@ class _NewPostsListState extends ConsumerState<NewPostsList> {
                 width: size.width,
                 height: size.height,
                 decoration: BoxDecoration(
-                  color: Palette.rhinoDark700,
+                  color: Pallete.rhinoDark700,
                   borderRadius: BorderRadius.circular(24.0),
                 ),
               ),
@@ -65,7 +65,7 @@ class _NewPostsListState extends ConsumerState<NewPostsList> {
                         vertical: size.height * 0.035, horizontal: 60),
                     padding: EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
-                      color: Palette.subTextColor,
+                      color: Pallete.subTextColor,
                       borderRadius: BorderRadius.circular(24.0),
                     ),
                     child: Row(

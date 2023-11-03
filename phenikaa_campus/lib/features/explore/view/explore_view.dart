@@ -49,7 +49,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                 width: size.width,
                 height: size.height * 0.8,
                 decoration: BoxDecoration(
-                  gradient: Palette.cardColor,
+                  gradient: Pallete.cardColor,
                   borderRadius: BorderRadius.circular(24.0),
                 ),
               ),
@@ -76,12 +76,12 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                       width: 5,
                       fit: BoxFit.scaleDown,
                       colorFilter: const ColorFilter.mode(
-                        Palette.whiteColor,
+                        Pallete.whiteColor,
                         BlendMode.srcIn,
                       ),
                     ),
                     hintText: search,
-                    fillColor: Palette.textformfieldColor,
+                    fillColor: Pallete.textformfieldColor,
                   ),
                 ),
                 // Layer 3: Container with Background Color
@@ -93,7 +93,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                 width: size.width,
                 height: size.height,
                 decoration: BoxDecoration(
-                  color: Palette.rhinoDark700,
+                  color: Pallete.rhinoDark700,
                   borderRadius: BorderRadius.circular(24.0),
                 ),
               ),
@@ -135,7 +135,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                                     ),
                                     decoration: BoxDecoration(
                                       color:
-                                          Palette.whiteColor.withOpacity(0.5),
+                                          Pallete.whiteColor.withOpacity(0.5),
                                       borderRadius: BorderRadius.circular(24.0),
                                     ),
                                     child: Text(
@@ -144,7 +144,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                                           : '0 Results',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Palette.rhinoDark500,
+                                        color: Pallete.rhinoDark500,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -188,7 +188,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                           child: Text(
                             noSearchFound,
                             style: TextStyle(
-                              color: Palette.whiteColor,
+                              color: Pallete.whiteColor,
                               fontSize: 28,
                             ),
                           ),
@@ -200,7 +200,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                               searchOtherWords,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: Palette.whiteColor,
+                                color: Pallete.whiteColor,
                                 fontSize: 14,
                               ),
                             ),

@@ -22,7 +22,7 @@ class TweetIconButton extends StatelessWidget {
         children: [
           SvgPicture.asset(
             pathName,
-            color: Palette.greyColor,
+            color: Pallete.greyColor,
           ),
           Container(
             margin: const EdgeInsets.all(6),
