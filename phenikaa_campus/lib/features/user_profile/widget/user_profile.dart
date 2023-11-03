@@ -1,10 +1,14 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:phenikaa_campus/common/common.dart';
 import 'package:phenikaa_campus/common/loading_page.dart';
 import 'package:phenikaa_campus/features/auth/controller/auth_controller.dart';
+import 'package:phenikaa_campus/features/tweet/widgets/tweet_card.dart';
+import 'package:phenikaa_campus/features/user_profile/%20controller/user_profile_controller.dart';
 import 'package:phenikaa_campus/features/user_profile/widget/follow_count.dart';
 import 'package:phenikaa_campus/theme/pallete.dart';
 import '../ controller/color_controller.dart';
@@ -23,7 +27,7 @@ class UserProfile extends ConsumerWidget {
     var heightStatusBar = MediaQuery.of(context).viewPadding.top;
     var size = MediaQuery.of(context).size;
     final expandedHeight = 300.0;
-    final collapsedHeight = 60.0;
+    final collapsedHeight = 70.0;
     double containerHeight;
 
     if (Platform.isAndroid) {
@@ -31,7 +35,13 @@ class UserProfile extends ConsumerWidget {
     } else {
       containerHeight = expandedHeight - collapsedHeight;
     }
-
+    final tweetLengthProvider = Provider<int>((ref) {
+      final tweets = ref.watch(getUserTweetsProvider(user.uid));
+      return tweets.maybeWhen(
+        data: (tweets) => tweets.length,
+        orElse: () => 0, // Default to 0 if data is not available yet
+      );
+    });
     ScrollController _scrollController = ScrollController();
 
     // Define a Provider for ColorNotifier
@@ -53,7 +63,6 @@ class UserProfile extends ConsumerWidget {
             .changeColor(Palette.rhinoDark800);
       }
     });
-
     return currentUser == null
         ? const Loader()
         : CustomScrollView(
@@ -78,7 +87,7 @@ class UserProfile extends ConsumerWidget {
                 collapsedHeight: collapsedHeight,
                 floating: true,
                 pinned: true,
-                snap: true,
+                snap: false,
                 title: Consumer(
                   builder: (context, ref, _) {
                     final titleColor = ref.watch(colorNotifierProvider);
@@ -91,8 +100,8 @@ class UserProfile extends ConsumerWidget {
                 backgroundColor: Palette.rhinoDark700,
                 flexibleSpace: FlexibleSpaceBar(
                   titlePadding: EdgeInsets.only(left: size.width * 0.08),
-                  centerTitle: true,
-                  collapseMode: CollapseMode.pin,
+                  // centerTitle: true,
+                  collapseMode: CollapseMode.parallax,
                   background: Stack(
                     children: [
                       Align(
@@ -126,7 +135,7 @@ class UserProfile extends ConsumerWidget {
                         ),
                       ),
                       Positioned(
-                        bottom: collapsedHeight + 52,
+                        bottom: collapsedHeight + 55,
                         left: size.width * 0.39,
                         child: Text(
                           user.name,
@@ -153,15 +162,16 @@ class UserProfile extends ConsumerWidget {
                         ),
                       ),
                       Positioned(
-                        left: size.width * 0.08,
+                        // left: size.width * 0.08,
                         bottom: collapsedHeight - 60,
                         child: Row(
                           children: [
+                            Gap(size.width * 0.1),
                             RoundedSmallButton(
                                 text: 'Message',
                                 backgroundColor: Palette.rhinoDark600,
                                 onTap: () {}),
-                            const SizedBox(width: 18),
+                            Gap(size.width * 0.06),
                             RoundedSmallButton(
                                 text: currentUser.uid == user.uid
                                     ? 'Edit Profile'
