@@ -19,7 +19,7 @@ class NotificationView extends ConsumerWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-    backgroundColor: Palette.noColor,
+      backgroundColor: Pallete.noColor,
       body: currentUser == null
           ? const Loader()
           : ref.watch(getNotificationsProvider(currentUser.uid)).when(
@@ -51,7 +51,6 @@ class NotificationView extends ConsumerWidget {
                         ),
                         loading: () {
                           return ListView.builder(
-                          
                             itemCount: notifications.length,
                             itemBuilder: (BuildContext context, int index) {
                               final notification = notifications[index];

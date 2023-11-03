@@ -28,7 +28,7 @@ class _NotificationsListState extends ConsumerState<NotificationsList> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Palette.blackColor,
+      backgroundColor: Pallete.blackColor,
       body: SizedBox(
         width: size.width,
         height: size.height,
@@ -42,7 +42,7 @@ class _NotificationsListState extends ConsumerState<NotificationsList> {
                 width: size.width,
                 height: size.height * 0.8,
                 decoration: BoxDecoration(
-                  color: Palette.rhinoDark700,
+                  color: Pallete.rhinoDark700,
                   borderRadius: BorderRadius.circular(24.0),
                 ),
               ),
@@ -53,7 +53,7 @@ class _NotificationsListState extends ConsumerState<NotificationsList> {
                 width: size.width,
                 height: size.height,
                 decoration: BoxDecoration(
-                  gradient: Palette.cardColor,
+                  gradient: Pallete.cardColor,
                   borderRadius: BorderRadius.circular(24.0),
                 ),
               ),

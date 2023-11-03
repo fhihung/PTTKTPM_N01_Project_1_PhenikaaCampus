@@ -19,18 +19,18 @@ class NotificationTile extends StatelessWidget {
       leading: notification.notificationType == NotificationType.follow
           ? const Icon(
               Icons.person,
-              color: Palette.blueColor,
+              color: Pallete.blueColor,
             )
           : notification.notificationType == NotificationType.like
               ? SvgPicture.asset(
                   AssetsConstants.likeFilledIcon,
-                  color: Palette.redColor,
+                  color: Pallete.redColor,
                   height: 20,
                 )
               : notification.notificationType == NotificationType.retweet
                   ? SvgPicture.asset(
                       AssetsConstants.retweetIcon,
-                      color: Palette.whiteColor,
+                      color: Pallete.whiteColor,
                       height: 20,
                     )
                   : null,

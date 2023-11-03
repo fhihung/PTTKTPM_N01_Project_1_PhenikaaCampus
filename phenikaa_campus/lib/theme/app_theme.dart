@@ -5,13 +5,13 @@ import 'theme.dart';
 
 class AppTheme {
   static ThemeData theme = ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: Palette.rhinoDark800,
+    scaffoldBackgroundColor: Pallete.rhinoDark800,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Palette.rhinoDark800,
+      backgroundColor: Pallete.rhinoDark800,
       elevation: 0,
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: Palette.blueColor,
+      backgroundColor: Pallete.blueColor,
     ),
     textTheme: TextTheme(
       bodyText2: GoogleFonts.manrope(color: Colors.white, fontSize: 16),

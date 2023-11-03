@@ -14,7 +14,7 @@ class UIConstants {
         AssetsConstants.phenikaaLogo,
         height: 40,
         colorFilter:
-            const ColorFilter.mode(Palette.whiteColor, BlendMode.srcIn),
+            const ColorFilter.mode(Pallete.whiteColor, BlendMode.srcIn),
       ),
       centerTitle: true,
     );
