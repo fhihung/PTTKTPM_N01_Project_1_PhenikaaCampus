@@ -50,6 +50,8 @@ dependencies:
   baseflow_plugin_template: ^2.1.2
   zoom_widget: ^2.0.1
   gap: ^3.0.1
+  flutter_advanced_segment: ^3.0.2
+  material_segmented_control: ^5.0.0
 
 dev_dependencies:
   flutter_test:

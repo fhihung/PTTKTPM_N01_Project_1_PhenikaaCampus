@@ -14,7 +14,7 @@ class AppTheme {
       backgroundColor: Pallete.blueColor,
     ),
     textTheme: TextTheme(
-      bodyText2: GoogleFonts.manrope(color: Colors.white, fontSize: 16),
+      bodyMedium: GoogleFonts.manrope(color: Colors.white, fontSize: 16),
     ),
   );
 }

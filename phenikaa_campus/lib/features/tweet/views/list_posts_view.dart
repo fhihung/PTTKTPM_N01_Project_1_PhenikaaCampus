@@ -65,7 +65,7 @@ class _NewPostsListState extends ConsumerState<NewPostsList> {
                         vertical: size.height * 0.035, horizontal: 60),
                     padding: EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
-                      color: Pallete.subTextColor,
+                      color: Pallete.rhinoDark700,
                       borderRadius: BorderRadius.circular(24.0),
                     ),
                     child: Row(
