@@ -179,7 +179,8 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                 : SizedBox(),
             !isShowUsers
                 ? Container(
-                    margin: EdgeInsets.only(top: 300, left: 28, right: 28),
+                    margin:
+                        const EdgeInsets.only(top: 300, left: 28, right: 28),
                     child: Column(
                       children: [
                         Image.asset(AssetsConstants.darkNoContent),
