@@ -1,6 +1,8 @@
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phenikaa_campus/apis/tweet_api.dart';
 import 'package:phenikaa_campus/models/tweet_model.dart';
+import 'package:phenikaa_campus/models/user_models.dart';
 
 final UserProfileControllerProvider = StateNotifierProvider(
   (ref) {
@@ -26,4 +28,6 @@ class UserProfileController extends StateNotifier<bool> {
     final tweets = await _tweetAPI.getUserTweets(uid);
     return tweets.map((e) => Tweet.fromMap(e.data)).toList();
   }
+
+  void updateUserProfile({required UserModel userModel, required BuildContext context, required bannerFile, required profileFile}) {}
 }

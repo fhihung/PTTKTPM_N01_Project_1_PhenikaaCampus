@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
 import 'package:phenikaa_campus/constants/ui_constant.dart';
+import 'package:phenikaa_campus/features/home/widgets/slide_.dart';
 import 'package:phenikaa_campus/features/tweet/views/create_tweet_view.dart';
 import 'package:phenikaa_campus/theme/theme.dart';
 
@@ -34,6 +35,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _page == 0 ? appBar : null,
+      drawer: const SideDrawer(),
       body: IndexedStack(index: _page, children: UIConstants.bottomTabBarPages),
       bottomNavigationBar: CupertinoTabBar(
         currentIndex: _page,

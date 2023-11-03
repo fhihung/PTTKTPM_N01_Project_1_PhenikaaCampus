@@ -4,7 +4,6 @@ import 'package:phenikaa_campus/theme/pallete.dart';
 import '../../../common/error_page.dart';
 import '../../../common/loading_page.dart';
 import '../../../constants/appwrite_constant.dart';
-import '../../../constants/assets_constants.dart';
 import '../../../models/notification_model.dart' as model;
 import '../../auth/controller/auth_controller.dart';
 import '../controller/notification_controller.dart';
@@ -19,11 +18,12 @@ class NotificationView extends ConsumerWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-    backgroundColor: Palette.noColor,
+      backgroundColor: Palette.noColor,
       body: currentUser == null
           ? const Loader()
           : ref.watch(getNotificationsProvider(currentUser.uid)).when(
                 data: (notifications) {
+                  print("$notifications ");
                   return ref.watch(getLatestNotificationProvider).when(
                         data: (data) {
                           if (data.events.contains(
@@ -51,7 +51,6 @@ class NotificationView extends ConsumerWidget {
                         ),
                         loading: () {
                           return ListView.builder(
-                          
                             itemCount: notifications.length,
                             itemBuilder: (BuildContext context, int index) {
                               final notification = notifications[index];

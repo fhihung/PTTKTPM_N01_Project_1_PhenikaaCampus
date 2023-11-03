@@ -6,6 +6,7 @@ import 'package:phenikaa_campus/apis/auth_api.dart';
 import 'package:phenikaa_campus/apis/user_api.dart';
 import 'package:phenikaa_campus/core/utils.dart';
 import 'package:phenikaa_campus/features/auth/view/login_view.dart';
+import 'package:phenikaa_campus/features/auth/view/signup_view.dart';
 import 'package:phenikaa_campus/features/home/view/home_view.dart';
 import 'package:phenikaa_campus/models/user_models.dart';
 
@@ -103,5 +104,16 @@ class AuthController extends StateNotifier<bool> {
     final document = await _userAPI.getUserData(uid);
     final updateUser = UserModel.fromMap(document.data);
     return updateUser;
+  }
+
+  void logout(BuildContext context) async {
+    final res = await _authAPI.logout();
+    res.fold((l) => null, (r) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        SignUpView.route(),
+        (route) => false,
+      );
+    });
   }
 }
