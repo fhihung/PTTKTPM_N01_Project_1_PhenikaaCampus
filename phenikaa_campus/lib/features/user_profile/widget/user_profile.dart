@@ -1,10 +1,14 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:phenikaa_campus/common/common.dart';
 import 'package:phenikaa_campus/common/loading_page.dart';
 import 'package:phenikaa_campus/features/auth/controller/auth_controller.dart';
+import 'package:phenikaa_campus/features/tweet/widgets/tweet_card.dart';
+import 'package:phenikaa_campus/features/user_profile/%20controller/user_profile_controller.dart';
 import 'package:phenikaa_campus/features/user_profile/widget/follow_count.dart';
 import 'package:phenikaa_campus/theme/pallete.dart';
 import '../ controller/color_controller.dart';
@@ -23,7 +27,7 @@ class UserProfile extends ConsumerWidget {
     var heightStatusBar = MediaQuery.of(context).viewPadding.top;
     var size = MediaQuery.of(context).size;
     final expandedHeight = 300.0;
-    final collapsedHeight = 60.0;
+    final collapsedHeight = 70.0;
     double containerHeight;
 
     if (Platform.isAndroid) {
@@ -31,7 +35,13 @@ class UserProfile extends ConsumerWidget {
     } else {
       containerHeight = expandedHeight - collapsedHeight;
     }
-
+    final tweetLengthProvider = Provider<int>((ref) {
+      final tweets = ref.watch(getUserTweetsProvider(user.uid));
+      return tweets.maybeWhen(
+        data: (tweets) => tweets.length,
+        orElse: () => 0, // Default to 0 if data is not available yet
+      );
+    });
     ScrollController _scrollController = ScrollController();
 
     // Define a Provider for ColorNotifier
@@ -53,7 +63,6 @@ class UserProfile extends ConsumerWidget {
             .changeColor(Pallete.rhinoDark800);
       }
     });
-
     return currentUser == null
         ? const Loader()
         : CustomScrollView(
@@ -78,7 +87,7 @@ class UserProfile extends ConsumerWidget {
                 collapsedHeight: collapsedHeight,
                 floating: true,
                 pinned: true,
-                snap: true,
+                snap: false,
                 title: Consumer(
                   builder: (context, ref, _) {
                     final titleColor = ref.watch(colorNotifierProvider);
@@ -91,8 +100,8 @@ class UserProfile extends ConsumerWidget {
                 backgroundColor: Pallete.rhinoDark700,
                 flexibleSpace: FlexibleSpaceBar(
                   titlePadding: EdgeInsets.only(left: size.width * 0.08),
-                  centerTitle: true,
-                  collapseMode: CollapseMode.pin,
+                  // centerTitle: true,
+                  collapseMode: CollapseMode.parallax,
                   background: Stack(
                     children: [
                       Align(
@@ -153,26 +162,27 @@ class UserProfile extends ConsumerWidget {
                         ),
                       ),
                       Positioned(
-                        left: size.width * 0.08,
+                        // left: size.width * 0.08,
                         bottom: collapsedHeight - 60,
                         child: Row(
                           children: [
+                            Gap(size.width * 0.1),
                             RoundedSmallButton(
                                 text: 'Message',
                                 backgroundColor: Pallete.rhinoDark600,
                                 onTap: () {}),
-                            const SizedBox(width: 18),
+                            Gap(size.width * 0.06),
                             RoundedSmallButton(
                                 text: currentUser.uid == user.uid
                                     ? 'Edit Profile'
                                     : 'Follow',
                                 backgroundColor: Pallete.rhinoDark600,
                                 onTap: () {}),
-                            SizedBox(width: 18),
-                            RoundedSmallButton(
-                                text: '...',
-                                backgroundColor: Pallete.rhinoDark600,
-                                onTap: () {})
+                            // SizedBox(width: 18),
+                            // RoundedSmallButton(
+                            //     text: '...',
+                            //     backgroundColor: Pallete.rhinoDark600,
+                            //     onTap: () {})
                           ],
                         ),
                       )
@@ -180,15 +190,64 @@ class UserProfile extends ConsumerWidget {
                   ),
                 ),
               ),
-              for (int i = 0; i < 10; i++)
-                SliverToBoxAdapter(
-                  child: Container(
-                    height: 200,
-                    color: i % 2 == 0
-                        ? Pallete.rhinoDark500
-                        : Pallete.rhinoDark700,
-                  ),
-                )
+              // SliverToBoxAdapter(
+              //   child: ref.watch(getUserTweetsProvider(user.uid)).when(
+              //         data: (tweets) {
+              //           return SizedBox(
+              //             height: size.height,
+              //             child: ListView.builder(
+              //               // physics:
+              //               // NeverScrollableScrollPhysics(), // Disable scrolling
+              //               itemCount: tweets.length,
+              //               itemBuilder: (BuildContext context, int index) {
+              //                 final tweet = tweets[index];
+              //                 return TweetCard(tweet: tweet);
+              //               },
+              //             ),
+              //           );
+              //         },
+              //         error: (error, st) => ErrorText(
+              //           error: error.toString(),
+              //         ),
+              //         loading: () => const Loader(),
+              //       ),
+              // ),
+
+// In your SliverList widget
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                    return ref.watch(getUserTweetsProvider(user.uid)).when(
+                      data: (tweets) {
+                        final tweet = tweets[index];
+                        return TweetCard(tweet: tweet);
+                      },
+                      error: (error, st) {
+                        return ErrorText(error: error.toString());
+                      },
+                      loading: () {
+                        return const Loader();
+                      },
+                    );
+                  },
+                  childCount: ref
+                      .watch(tweetLengthProvider), // Use the calculated length
+                ),
+              )
+              // switch (ref.watch(getUserTweetsProvider(user.uid))) {
+              //   AsyncData(value: final tweets) => SliverList.builder(
+              //       itemCount: tweets.length,
+              //       itemBuilder: (BuildContext context, int index) {
+              //         final tweet = tweets[index];
+              //         return TweetCard(tweet: tweet);
+              //       },
+              //     ),
+              //   AsyncError(:final error) => ErrorText(
+              //       error: error.toString(),
+              //     ),
+              //   AsyncLoading() => Loader(),
+              //   _ => Container(),
+              // }
             ],
           );
   }
