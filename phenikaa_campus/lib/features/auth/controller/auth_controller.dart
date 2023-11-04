@@ -9,16 +9,17 @@ import 'package:phenikaa_campus/features/auth/view/login_view.dart';
 import 'package:phenikaa_campus/features/home/view/home_view.dart';
 import 'package:phenikaa_campus/models/user_models.dart';
 
-final authControllerProvider =
-    StateNotifierProvider<AuthController, bool>((ref) {
+final authControllerProvider = StateNotifierProvider<AuthController, bool>((ref) {
   return AuthController(
     authAPI: ref.watch(authAPIProvider),
     userAPI: ref.watch(userAPIProvider),
   );
 });
 
-final currentUserDetailsProvider = FutureProvider((ref) {
-  final currentUserId = ref.watch(currentUserAccountProvider).value!.$id;
+final currentUserDetailsProvider = FutureProvider((ref) async {
+  final currentUserAccount = await ref.watch(currentUserAccountProvider.future);
+  final currentUserId = currentUserAccount?.$id;
+  if (currentUserId == null) return null;
   final userDetails = ref.watch(userDetailsProvider(currentUserId));
   return userDetails.value;
 }); //currentUserDetailsProvider
@@ -80,7 +81,7 @@ class AuthController extends StateNotifier<bool> {
     );
   }
 
-  void login({
+  Future<void> login({
     required String email,
     required String password,
     required BuildContext context,

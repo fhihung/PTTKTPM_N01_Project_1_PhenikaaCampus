@@ -1,11 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:material_segmented_control/material_segmented_control.dart';
 import 'package:phenikaa_campus/common/common.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
-
 import 'package:phenikaa_campus/constants/ui_constant.dart';
 import 'package:phenikaa_campus/features/auth/view/signup_view.dart';
 import 'package:phenikaa_campus/features/auth/widgets/auth_field.dart';
@@ -27,11 +24,11 @@ class _LoginViewState extends ConsumerState<LoginView> {
   final appbar = UIConstants.appBar();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  Map<int, Widget> _children = {
-    0: Text('Login'),
-    1: Text('Sign Up'),
+  final Map<int, Widget> _children = {
+    0: const Text('Login'),
+    1: const Text('Sign Up'),
   };
-  int _currentSelection = 0;
+  final int _currentSelection = 0;
   @override
   void dispose() {
     super.dispose();
@@ -39,8 +36,8 @@ class _LoginViewState extends ConsumerState<LoginView> {
     passwordController.dispose();
   }
 
-  void onLogin() {
-    ref.read(authControllerProvider.notifier).login(
+  void onLogin() async {
+    await ref.read(authControllerProvider.notifier).login(
           email: emailController.text,
           password: passwordController.text,
           context: context,
@@ -54,7 +51,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
     return Scaffold(
         // appBar: appbar,
         body: isLoading
-            ? Loader()
+            ? const Loader()
             : SingleChildScrollView(
                 child: SizedBox(
                   width: size.width,
@@ -68,13 +65,13 @@ class _LoginViewState extends ConsumerState<LoginView> {
                       ),
                       Positioned.fill(
                         top: size.height * 0.068,
-                        child: Align(
+                        child: const Align(
                           alignment: Alignment.topCenter,
                           child: Column(
                             children: [
                               Text(
                                 'Hello,',
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontWeight: FontWeight.w800, // Để in đậm
                                   fontSize: 40, // Điều chỉnh kích thước chữ
                                 ),
@@ -96,7 +93,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                       Positioned(
                         top: size.height * 0.3,
                         child: Container(
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               // horizontal: 10.0,
                               ),
                           width: size.width,
@@ -110,7 +107,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                       Positioned(
                         top: size.height * 0.1,
                         child: Container(
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               // horizontal: 10.0,
                               ),
                           width: size.width,
@@ -118,8 +115,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                           child: Center(
                             child: SingleChildScrollView(
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
                                 child: Column(
                                   children: [
                                     // textfield 1
