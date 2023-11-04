@@ -1,129 +1,180 @@
+import 'package:boxy/padding.dart';
+import 'package:flextras/flextras.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:phenikaa_campus/common/loading_page.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
 import 'package:phenikaa_campus/features/auth/controller/auth_controller.dart';
-import 'package:phenikaa_campus/features/setting_profile/widget/setting_profile.dart';
 import 'package:phenikaa_campus/theme/pallete.dart';
 
-import '../../../models/user_models.dart';
-
 class SettingProfileView extends ConsumerStatefulWidget {
-  const SettingProfileView({Key? key});
+  const SettingProfileView({super.key});
 
   @override
   ConsumerState<SettingProfileView> createState() => _SettingProfileViewState();
 }
 
 class _SettingProfileViewState extends ConsumerState<SettingProfileView> {
+  static final actionMaps = [
+    (Icons.people, 'Edit Profile'),
+    (Icons.notifications, 'Notifications'),
+    (Icons.lock, 'Privacy'),
+    (Icons.help, 'Help'),
+    (Icons.logout, 'Logout'),
+  ];
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    final currentUser = ref.watch(currentUserDetailsProvider).value;
-    final posi1 = 100.0;
-    final posi2 = 200.0;
-    if (currentUser == null) {
-      return Loader(); // Display loading indicator or handle error
-    }
-    return Scaffold(
-      body: SizedBox(
-        width: size.width,
-        height: size.height,
-        child: Stack(
-          children: [
-            Positioned(
-              top: 0,
-              right: 0,
-              child: Image.asset(AssetsConstants.darkBlur),
-            ),
-            Positioned(
-              top: posi1,
-              child: Container(
-                margin: EdgeInsets.symmetric(
-                    // horizontal: 10.0,
+    final currentUser = ref.watch(currentUserDetailsProvider);
+    const posi1 = 100.0;
+    return switch (currentUser) {
+      AsyncData(value: final currentUser?) || AsyncLoading(value: final currentUser?) => Scaffold(
+          body: Stack(
+            children: [
+              Positioned.fill(child: Image.asset(AssetsConstants.darkBlur)),
+              Positioned.fill(
+                child: Column(
+                  children: [
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: Pallete.cardColor,
+                        borderRadius: BorderRadius.circular(24.0),
+                      ),
+                      child: const SizedBox(height: 300, width: double.maxFinite),
                     ),
-                width: size.width,
-                height: size.height * 0.8,
-                decoration: BoxDecoration(
-                  gradient: Pallete.cardColor,
-                  borderRadius: BorderRadius.circular(24.0),
-                ),
-              ),
-            ),
-            Positioned(
-              top: posi2,
-              child: Container(
-                width: size.width,
-                height: size.height,
-                decoration: BoxDecoration(
-                  color: Pallete.rhinoDark700,
-                  borderRadius: BorderRadius.circular(24.0),
-                ),
-              ),
-            ),
-            Positioned(
-              top: posi2 - 40,
-              left: (size.width - 165) / 2,
-              child: Container(
-                padding: EdgeInsets.all(5),
-                decoration: ShapeDecoration(
-                  color: Pallete.rhinoDark800,
-                  shape: CircleBorder(),
-                ),
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(currentUser.profilePic),
-                  radius: 80,
-                ),
-              ),
-            ),
-            Positioned(
-              top: posi2 + 60,
-              left: (size.width) / 2 +
-                  30, // Adjust the left position to center the button
-              child: Container(
-                padding: EdgeInsets.all(5),
-                decoration: ShapeDecoration(
-                  color: Pallete.rhinoDark800,
-                  shape: CircleBorder(),
-                ),
-                child: CircleAvatar(
-                  backgroundColor: Pallete.yellow800,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.camera_alt,
-                      color: Pallete.rhinoDark800,
+                    Expanded(
+                      child: OverflowPadding(
+                        padding: const EdgeInsets.only(top: -30, bottom: -30),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Pallete.rhinoDark700,
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Center(
+                                child: OverflowPadding(
+                                  padding: const EdgeInsets.only(
+                                    top: -posi1,
+                                  ),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(5),
+                                    decoration: const ShapeDecoration(
+                                      color: Pallete.rhinoDark800,
+                                      shape: CircleBorder(),
+                                    ),
+                                    constraints: BoxConstraints.tight(const Size.square(160)),
+                                    child: Stack(
+                                      fit: StackFit.loose,
+                                      children: [
+                                        CircleAvatar(backgroundImage: NetworkImage(currentUser.profilePic), radius: 80),
+                                        Align(
+                                          alignment: Alignment.bottomRight,
+                                          child: Container(
+                                            padding: const EdgeInsets.all(5),
+                                            decoration: const ShapeDecoration(
+                                              color: Pallete.rhinoDark800,
+                                              shape: CircleBorder(),
+                                            ),
+                                            child: CircleAvatar(
+                                              backgroundColor: Pallete.yellow800,
+                                              radius: 25,
+                                              child: IconButton(
+                                                onPressed: () {},
+                                                icon: const Icon(
+                                                  Icons.camera_alt,
+                                                  color: Pallete.rhinoDark800,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              PaddedRow(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 15,
+                                  horizontal: 20,
+                                ),
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    ' ${currentUser.name}',
+                                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text.rich(
+                                            TextSpan(
+                                              text: '${currentUser.followers.length} ',
+                                              children: const [
+                                                TextSpan(
+                                                  text: 'followers',
+                                                  style: TextStyle(
+                                                    color: Pallete.whiteColor,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const Gap(10),
+                                      Row(
+                                        children: [
+                                          Text.rich(
+                                            TextSpan(
+                                              text: '${currentUser.following.length} ',
+                                              children: const [
+                                                TextSpan(
+                                                  text: 'following',
+                                                  style: TextStyle(
+                                                    color: Pallete.whiteColor,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              const Gap(30),
+                              Expanded(
+                                child: ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  itemCount: actionMaps.length,
+                                  itemBuilder: (context, index) {
+                                    final (icon, title) = actionMaps[index];
+                                    return ListTile(
+                                      leading: Icon(icon),
+                                      title: Text(title),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  radius: 25,
+                  ],
                 ),
               ),
-            ),
-            Positioned.fill(
-              top: posi2 + posi1 + 60,
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  child: Text(
-                    ' ${currentUser.name}',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                  ),
-                ),
-              ),
-            ),
-          ],
-          // child: Center(
-          //   child: Column(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: [
-          //       Text("User Name: ${currentUser.name}"),
-          //       Text("Email: ${currentUser.email}"),
-          //       // Add more user profile information as needed
-          //     ],
-          //   ),
-          // ),
+            ],
+          ),
         ),
-      ),
-    );
+      _ => const Loader()
+    };
   }
 }

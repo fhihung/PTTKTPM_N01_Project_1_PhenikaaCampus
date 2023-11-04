@@ -16,5 +16,7 @@ class AppTheme {
     textTheme: TextTheme(
       bodyMedium: GoogleFonts.manrope(color: Colors.white, fontSize: 16),
     ),
+    useMaterial3: true,
+    splashFactory: InkSparkle.splashFactory,
   );
 }

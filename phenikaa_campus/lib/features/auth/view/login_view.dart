@@ -42,7 +42,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
           password: passwordController.text,
           context: context,
         );
-  }
+}
 
   @override
   Widget build(BuildContext context) {
