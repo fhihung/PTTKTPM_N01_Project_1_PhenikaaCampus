@@ -218,9 +218,12 @@ class UserProfile extends ConsumerWidget {
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
+                    // Calculate the reversed index
+                    int reversedIndex =
+                        ref.watch(tweetLengthProvider) - 1 - index;
                     return ref.watch(getUserTweetsProvider(user.uid)).when(
                       data: (tweets) {
-                        final tweet = tweets[index];
+                        final tweet = tweets[reversedIndex];
                         return TweetCard(tweet: tweet);
                       },
                       error: (error, st) {
@@ -234,7 +237,7 @@ class UserProfile extends ConsumerWidget {
                   childCount: ref
                       .watch(tweetLengthProvider), // Use the calculated length
                 ),
-              )
+              ),
               // switch (ref.watch(getUserTweetsProvider(user.uid))) {
               //   AsyncData(value: final tweets) => SliverList.builder(
               //       itemCount: tweets.length,
