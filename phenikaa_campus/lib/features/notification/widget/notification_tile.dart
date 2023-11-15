@@ -45,6 +45,7 @@ class NotificationTile extends ConsumerWidget {
                 notification.text.length <= 50
                     ? "Ai đó đã bày tỏ cảm xúc về bài viết ${notification.text}"
                     : "Ai đó đã bày tỏ cảm xúc về bài viết ${notification.text.substring(0, 25)}...",
+                style: TextStyle(color: Pallete.blackColor),
               ),
             );
           },

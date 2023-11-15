@@ -1,3 +1,4 @@
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -142,7 +143,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                       child: RoundedSmallButton(
                                         backgroundColor: Pallete.rhinoDark600,
                                         onTap: onLogin,
-                                        text: 'Done',
+                                        text: 'Sign In',
                                       ),
                                     ),
                                     const SizedBox(height: 40),

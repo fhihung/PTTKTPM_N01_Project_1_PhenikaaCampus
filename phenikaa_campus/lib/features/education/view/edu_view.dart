@@ -14,7 +14,8 @@ class Education_View extends StatefulWidget {
 
 class _Education_ViewState extends State<Education_View> {
   late final WebViewController controller;
-
+  final url =
+      "https://login.microsoftonline.com/0eff33e2-f755-4d49-aa45-ac5ee4ce2308/oauth2/v2.0/authorize?client_id=5392332e-2635-4e9f-a313-2e8cb0f80056&redirect_uri=https://qldtbeta.phenikaa-uni.edu.vn/congsinhvien/login.aspx&response_mode=form_post&response_type=code&grant_type=authorization_code&scope=%20openid+profile&sso_reload=true";
   @override
   void initState() {
     super.initState();
@@ -30,16 +31,14 @@ class _Education_ViewState extends State<Education_View> {
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
-            if (request.url
-                .startsWith('https://qldtbeta.phenikaa-uni.edu.vn')) {
+            if (request.url.startsWith('https://google.com')) {
               return NavigationDecision.prevent;
             }
             return NavigationDecision.navigate;
           },
         ),
       )
-      ..loadRequest(Uri.parse(
-          'https://qldtbeta.phenikaa-uni.edu.vn/congsinhvien/index.aspx#lichhoc'));
+      ..loadRequest(Uri.parse(url));
   }
 
   @override
