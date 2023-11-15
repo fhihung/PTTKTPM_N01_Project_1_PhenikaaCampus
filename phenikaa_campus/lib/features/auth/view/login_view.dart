@@ -42,7 +42,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
           password: passwordController.text,
           context: context,
         );
-}
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +115,8 @@ class _LoginViewState extends ConsumerState<LoginView> {
                           child: Center(
                             child: SingleChildScrollView(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Column(
                                   children: [
                                     AuthField(
@@ -138,6 +139,16 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                         backgroundColor: Pallete.rhinoDark600,
                                         onTap: onLogin,
                                         text: 'Done',
+                                      ),
+                                    ),
+                                    const SizedBox(height: 40),
+                                    Align(
+                                      alignment: Alignment.topRight,
+                                      child: RoundedSmallButton(
+                                        backgroundColor:
+                                            Pallete.textformfieldColor,
+                                        onTap: () {},
+                                        text: 'Are you from Phenikaa?',
                                       ),
                                     ),
                                     const SizedBox(height: 40),

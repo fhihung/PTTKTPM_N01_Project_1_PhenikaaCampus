@@ -54,6 +54,8 @@ dependencies:
   gap: ^3.0.1
   flutter_advanced_segment: ^3.0.2
   material_segmented_control: ^5.0.0
+  webview_flutter: ^4.4.2
+
 
 dev_dependencies:
   flutter_test:

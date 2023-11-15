@@ -23,6 +23,8 @@ class AssetsConstants {
   static const String lockIcon = '$_svgsPath/lock-yellow.svg';
   static const String darkBlur = '$_pngPath/dark_blur_ornament.png';
   static const String darkNoContent = '$_pngPath/dark_no_content.png';
+  static const String eduLogo = '$_pngPath/eduLogo.png';
+  static const String canvasLogo = '$_pngPath/canvasLogo.png';
 
   //Light Theme
   static const String lightNoSearch = '$_svgsPath/light_no_search.svg';
