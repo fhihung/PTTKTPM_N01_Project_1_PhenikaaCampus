@@ -93,6 +93,7 @@ class AuthAPI implements IAuthAPI {
   @override
   FutureEitherVoid logout() async {
     try {
+      print("Logout ...");
       // Lấy danh sách các sessions
       final sessions = await _account.listSessions();
 
@@ -102,6 +103,7 @@ class AuthAPI implements IAuthAPI {
         if (session.current) {
           // Xóa session
           await _account.deleteSession(sessionId: session.$id);
+          print("Logged out");
           return right(null);
         }
       }

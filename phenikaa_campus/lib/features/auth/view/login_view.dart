@@ -8,6 +8,7 @@ import 'package:phenikaa_campus/constants/ui_constant.dart';
 import 'package:phenikaa_campus/features/auth/view/signup_view.dart';
 import 'package:phenikaa_campus/features/auth/widgets/auth_field.dart';
 import 'package:phenikaa_campus/theme/theme.dart';
+import 'package:restart_app/restart_app.dart';
 
 import '../controller/auth_controller.dart';
 
@@ -142,7 +143,11 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                       alignment: Alignment.topRight,
                                       child: RoundedSmallButton(
                                         backgroundColor: Pallete.rhinoDark600,
-                                        onTap: onLogin,
+                                        onTap: () {
+                                          () => onLogin;
+                                          // Gọi hàm restartApp để reload ứng dụng
+                                          Restart.restartApp();
+                                        },
                                         text: 'Sign In',
                                       ),
                                     ),

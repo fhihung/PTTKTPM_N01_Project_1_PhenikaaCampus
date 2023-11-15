@@ -235,11 +235,11 @@ class _SettingProfileViewState extends ConsumerState<SettingProfileView> {
                                       ),
                                       SizedBox(height: 20),
                                       GestureDetector(
-                                        onTap: () {
+                                        onTap: () => {
                                           ref
                                               .read(authControllerProvider
                                                   .notifier)
-                                              .logout(context);
+                                              .logout(context),
                                         },
                                         child: ListTile(
                                           trailing: const Icon(

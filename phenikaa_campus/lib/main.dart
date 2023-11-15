@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:phenikaa_campus/apis/auth_api.dart';
 import 'package:phenikaa_campus/common/common.dart';
 import 'package:phenikaa_campus/features/auth/controller/auth_controller.dart';
 import 'package:phenikaa_campus/features/auth/view/login_view.dart';
 import 'package:phenikaa_campus/features/auth/view/signup_view.dart';
+import 'package:phenikaa_campus/features/home/view/home_view.dart';
 import 'package:phenikaa_campus/theme/theme.dart';
 import 'package:phenikaa_campus/theme/theme_controller.dart';
 import 'package:phenikaa_campus/theme/theme_provider.dart';
@@ -28,11 +30,7 @@ class MyApp extends ConsumerWidget {
           theme: AppTheme.theme,
           home: ref.watch(currentUserAccountProvider).when(
               data: (user) {
-                if (user != null) {
-                  return const LoginView();
-                } else {
-                  return const SignUpView();
-                }
+                return user != null ? HomeView() : LoginView();
               },
               loading: () => const LoadingPage(
                     backgroundColor: Pallete.rhinoDark500,
