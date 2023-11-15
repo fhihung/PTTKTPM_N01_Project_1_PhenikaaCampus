@@ -6,7 +6,9 @@ import 'package:gap/gap.dart';
 import 'package:phenikaa_campus/common/loading_page.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
 import 'package:phenikaa_campus/features/auth/controller/auth_controller.dart';
+import 'package:phenikaa_campus/features/education/view/canvas_view.dart';
 import 'package:phenikaa_campus/features/education/view/edu_view.dart';
+import 'package:phenikaa_campus/features/user_profile/view/user_profile_view.dart';
 import 'package:phenikaa_campus/theme/pallete.dart';
 
 class SettingProfileView extends ConsumerStatefulWidget {
@@ -118,138 +120,157 @@ class _SettingProfileViewState extends ConsumerState<SettingProfileView> {
                                   indent: 24,
                                   endIndent: 24,
                                 ),
-                                const Gap(24),
-                                Column(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: ListTile(
-                                        trailing: const Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Pallete.subTextColor,
-                                        ),
-                                        leading: CircleAvatar(
-                                          backgroundColor: Pallete.whiteColor,
-                                          radius: 26,
-                                          child: CircleAvatar(
-                                            backgroundColor:
-                                                Pallete.rhinoDark700,
-                                            radius: 25,
-                                            child: SvgPicture.asset(
-                                              AssetsConstants.profileIcon,
-                                              colorFilter: ColorFilter.mode(
-                                                Pallete.yellow800,
-                                                BlendMode.srcIn,
-                                              ),
-                                            ),
+                                const Gap(5),
+                                Expanded(
+                                  child: ListView(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            UserProfileView.route(currentUser),
+                                          );
+                                        },
+                                        child: ListTile(
+                                          trailing: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Pallete.subTextColor,
                                           ),
-                                        ),
-                                        title: Text(
-                                          'Edit Profile',
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 20),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          Education_View.route(),
-                                        );
-                                      },
-                                      child: ListTile(
-                                        trailing: const Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Pallete.subTextColor,
-                                        ),
-                                        leading: CircleAvatar(
-                                          backgroundColor: Pallete.whiteColor,
-                                          radius: 26,
-                                          child: CircleAvatar(
-                                            backgroundColor:
-                                                Pallete.rhinoDark700,
-                                            radius: 25,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                image: DecorationImage(
-                                                  fit: BoxFit.cover,
-                                                  image: AssetImage(
-                                                      AssetsConstants.eduLogo),
+                                          leading: CircleAvatar(
+                                            backgroundColor: Pallete.whiteColor,
+                                            radius: 26,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  Pallete.rhinoDark700,
+                                              radius: 25,
+                                              child: SvgPicture.asset(
+                                                AssetsConstants.profileIcon,
+                                                colorFilter: ColorFilter.mode(
+                                                  Pallete.yellow800,
+                                                  BlendMode.srcIn,
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        title: Text(
-                                          'Education',
+                                          title: Text(
+                                            'Edit Profile',
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(height: 20),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: ListTile(
-                                        trailing: const Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Pallete.subTextColor,
-                                        ),
-                                        leading: CircleAvatar(
-                                          backgroundColor: Pallete.whiteColor,
-                                          radius: 26,
-                                          child: CircleAvatar(
-                                            backgroundColor:
-                                                Pallete.rhinoDark700,
-                                            radius: 25,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                image: DecorationImage(
-                                                  fit: BoxFit.cover,
-                                                  image: AssetImage(
-                                                      AssetsConstants
-                                                          .canvasLogo),
+                                      SizedBox(height: 20),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            Education_View.route(),
+                                          );
+                                        },
+                                        child: ListTile(
+                                          trailing: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Pallete.subTextColor,
+                                          ),
+                                          leading: CircleAvatar(
+                                            backgroundColor: Pallete.whiteColor,
+                                            radius: 26,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  Pallete.rhinoDark700,
+                                              radius: 25,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: AssetImage(
+                                                        AssetsConstants
+                                                            .eduLogo),
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        title: Text(
-                                          'Canvas',
+                                          title: Text(
+                                            'Education',
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(height: 20),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: ListTile(
-                                        trailing: const Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Pallete.subTextColor,
-                                        ),
-                                        leading: CircleAvatar(
-                                          backgroundColor: Pallete.whiteColor,
-                                          radius: 26,
-                                          child: CircleAvatar(
-                                            backgroundColor:
-                                                Pallete.rhinoDark700,
-                                            radius: 25,
-                                            child: SvgPicture.asset(
-                                              AssetsConstants.logoutIcon,
-                                              colorFilter: ColorFilter.mode(
-                                                Color.fromARGB(255, 255, 0, 0),
-                                                BlendMode.srcIn,
+                                      SizedBox(height: 20),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            Canvas_View.route(),
+                                          );
+                                        },
+                                        child: ListTile(
+                                          trailing: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Pallete.subTextColor,
+                                          ),
+                                          leading: CircleAvatar(
+                                            backgroundColor: Pallete.whiteColor,
+                                            radius: 26,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  Pallete.rhinoDark700,
+                                              radius: 25,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: AssetImage(
+                                                        AssetsConstants
+                                                            .canvasLogo),
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        title: Text(
-                                          'Log Out',
+                                          title: Text(
+                                            'Canvas',
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(height: 20),
-                                  ],
+                                      SizedBox(height: 20),
+                                      GestureDetector(
+                                        onTap: () {
+                                          ref
+                                              .read(authControllerProvider
+                                                  .notifier)
+                                              .logout(context);
+                                        },
+                                        child: ListTile(
+                                          trailing: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Pallete.subTextColor,
+                                          ),
+                                          leading: CircleAvatar(
+                                            backgroundColor: Pallete.whiteColor,
+                                            radius: 26,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  Pallete.rhinoDark700,
+                                              radius: 25,
+                                              child: SvgPicture.asset(
+                                                AssetsConstants.logoutIcon,
+                                                colorFilter: ColorFilter.mode(
+                                                  Color.fromARGB(
+                                                      255, 255, 0, 0),
+                                                  BlendMode.srcIn,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          title: Text(
+                                            'Log Out',
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),

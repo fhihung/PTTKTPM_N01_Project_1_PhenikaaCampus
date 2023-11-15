@@ -85,6 +85,10 @@ class _LoginViewState extends ConsumerState<LoginView> {
                               ),
                               Text(
                                 'Please enter your email and password ',
+                                style: TextStyle(
+                                  // Để in đậm
+                                  fontSize: 12, // Điều chỉnh kích thước chữ
+                                ),
                               )
                             ],
                           ),
@@ -142,15 +146,6 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                       ),
                                     ),
                                     const SizedBox(height: 40),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: RoundedSmallButton(
-                                        backgroundColor:
-                                            Pallete.textformfieldColor,
-                                        onTap: () {},
-                                        text: 'Are you from Phenikaa?',
-                                      ),
-                                    ),
                                     const SizedBox(height: 40),
                                     RichText(
                                       text: TextSpan(

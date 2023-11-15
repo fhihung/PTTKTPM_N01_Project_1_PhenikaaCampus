@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class Education_View extends StatefulWidget {
+class Canvas_View extends StatefulWidget {
   static route() => MaterialPageRoute(
-        builder: (context) => const Education_View(),
+        builder: (context) => const Canvas_View(),
       );
 
-  const Education_View({super.key});
+  const Canvas_View({super.key});
 
   @override
-  State<Education_View> createState() => _Education_ViewState();
+  State<Canvas_View> createState() => _Canvas_ViewState();
 }
 
-class _Education_ViewState extends State<Education_View> {
+class _Canvas_ViewState extends State<Canvas_View> {
   late final WebViewController controller;
 
   @override
@@ -30,23 +30,21 @@ class _Education_ViewState extends State<Education_View> {
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
-            if (request.url
-                .startsWith('https://qldtbeta.phenikaa-uni.edu.vn')) {
+            if (request.url.startsWith('https://google.com/')) {
               return NavigationDecision.prevent;
             }
             return NavigationDecision.navigate;
           },
         ),
       )
-      ..loadRequest(Uri.parse(
-          'https://qldtbeta.phenikaa-uni.edu.vn/congsinhvien/index.aspx#lichhoc'));
+      ..loadRequest(Uri.parse('https://canvas.phenikaa-uni.edu.vn/'));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Education'),
+        title: const Text('Canvas'),
       ),
       body: WebViewWidget(
         controller: controller,

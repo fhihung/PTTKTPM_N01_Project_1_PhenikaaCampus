@@ -76,7 +76,7 @@ class UserProfile extends ConsumerWidget {
                     return IconButton(
                       icon: Icon(
                         Icons.arrow_back_ios,
-                        color: titleColor,
+                        color: Pallete.whiteColor,
                       ),
                       onPressed: () {
                         Navigator.pop(context);
@@ -89,15 +89,6 @@ class UserProfile extends ConsumerWidget {
                 floating: true,
                 pinned: true,
                 snap: false,
-                title: Consumer(
-                  builder: (context, ref, _) {
-                    final titleColor = ref.watch(colorNotifierProvider);
-                    return Text(
-                      user.name,
-                      style: TextStyle(fontSize: 20, color: titleColor),
-                    );
-                  },
-                ),
                 backgroundColor: Pallete.rhinoDark700,
                 flexibleSpace: FlexibleSpaceBar(
                   titlePadding: EdgeInsets.only(left: size.width * 0.08),
@@ -136,12 +127,12 @@ class UserProfile extends ConsumerWidget {
                         ),
                       ),
                       Positioned(
-                        bottom: collapsedHeight + 55,
+                        bottom: collapsedHeight + 40,
                         left: size.width * 0.39,
                         child: Text(
                           user.name,
                           style: TextStyle(
-                            color: Pallete.rhinoDark600,
+                            color: Pallete.whiteColor,
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
                           ),

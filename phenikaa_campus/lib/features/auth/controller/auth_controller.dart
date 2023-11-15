@@ -10,7 +10,8 @@ import 'package:phenikaa_campus/features/auth/view/signup_view.dart';
 import 'package:phenikaa_campus/features/home/view/home_view.dart';
 import 'package:phenikaa_campus/models/user_models.dart';
 
-final authControllerProvider = StateNotifierProvider<AuthController, bool>((ref) {
+final authControllerProvider =
+    StateNotifierProvider<AuthController, bool>((ref) {
   return AuthController(
     authAPI: ref.watch(authAPIProvider),
     userAPI: ref.watch(userAPIProvider),
@@ -88,6 +89,7 @@ class AuthController extends StateNotifier<bool> {
     required BuildContext context,
   }) async {
     state = true;
+    print("object $email $password");
     final res = await _authAPI.login(
       email: email,
       password: password,
@@ -112,7 +114,7 @@ class AuthController extends StateNotifier<bool> {
     res.fold((l) => null, (r) {
       Navigator.pushAndRemoveUntil(
         context,
-        SignUpView.route(),
+        LoginView.route(),
         (route) => false,
       );
     });
