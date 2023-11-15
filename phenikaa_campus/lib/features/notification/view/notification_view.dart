@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phenikaa_campus/theme/pallete.dart';
+
 import '../../../common/error_page.dart';
 import '../../../common/loading_page.dart';
 import '../../../constants/appwrite_constant.dart';
@@ -15,7 +16,6 @@ class NotificationView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentUser = ref.watch(currentUserDetailsProvider).value;
-    Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       backgroundColor: Pallete.noColor,

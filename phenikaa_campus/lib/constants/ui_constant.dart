@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
 import 'package:phenikaa_campus/features/explore/view/explore_view.dart';
 import 'package:phenikaa_campus/features/notification/view/list_noti_view.dart';
+import 'package:phenikaa_campus/features/setting_profile/view/setting_profile_view.dart';
+
 import 'package:phenikaa_campus/features/tweet/views/list_posts_view.dart';
 import 'package:phenikaa_campus/theme/pallete.dart';
 
@@ -27,5 +29,7 @@ class UIConstants {
     const ExploreView(),
     // const UserProfileView(),
     const NotificationsList(),
+    //
+    const SettingProfileView(),
   ];
 }

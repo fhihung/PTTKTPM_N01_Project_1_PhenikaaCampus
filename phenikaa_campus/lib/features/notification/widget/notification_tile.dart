@@ -21,7 +21,6 @@ class NotificationTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ref.watch(getTweetsProvider).when(
           data: (tweets) {
-            print(tweets);
             return ListTile(
               leading: notification.notificationType == NotificationType.follow
                   ? const Icon(
@@ -43,7 +42,10 @@ class NotificationTile extends ConsumerWidget {
                             )
                           : null,
               title: Text(
-                  "Ai đó đã bày tỏ cảm xúc về bài viết ${notification.text}"),
+                notification.text.length <= 50
+                    ? "Ai đó đã bày tỏ cảm xúc về bài viết ${notification.text}"
+                    : "Ai đó đã bày tỏ cảm xúc về bài viết ${notification.text.substring(0, 25)}...",
+              ),
             );
           },
           error: (error, stackTrace) => ErrorText(
