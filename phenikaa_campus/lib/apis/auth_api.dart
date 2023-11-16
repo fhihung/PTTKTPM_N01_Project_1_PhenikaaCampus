@@ -103,6 +103,7 @@ class AuthAPI implements IAuthAPI {
         if (session.current) {
           // Xóa session
           await _account.deleteSession(sessionId: session.$id);
+          print(session.$id);
           print("Logged out");
           return right(null);
         }
