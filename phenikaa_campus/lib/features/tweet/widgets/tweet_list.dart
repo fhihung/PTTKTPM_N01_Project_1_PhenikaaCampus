@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phenikaa_campus/features/tweet/views/twitter_reply_view.dart';
+import 'package:restart_app/restart_app.dart';
 
 import '../../../models/tweet_model.dart';
 import 'tweet_card.dart';
@@ -16,19 +17,18 @@ class TweetList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListView.builder(
-      itemCount: tweets.length,
-      itemBuilder: (BuildContext context, int index) {
-        final tweet = tweets[index];
-        return TweetCard(
-          tweet: tweet,
-          changeOnTap: () {
-            Navigator.push(
-              context,
-              TwitterReplyScreen.route(tweet),
-            );
-          },
-        );
-      },
-    );
+        itemCount: tweets.length,
+        itemBuilder: (BuildContext context, int index) {
+          final tweet = tweets[index];
+          return TweetCard(
+            tweet: tweet,
+            changeOnTap: () {
+              Navigator.push(
+                context,
+                TwitterReplyScreen.route(tweet),
+              );
+            },
+          );
+        });
   }
 }

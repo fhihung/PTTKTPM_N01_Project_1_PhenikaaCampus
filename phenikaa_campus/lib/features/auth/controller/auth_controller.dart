@@ -9,6 +9,7 @@ import 'package:phenikaa_campus/features/auth/view/login_view.dart';
 import 'package:phenikaa_campus/features/auth/view/signup_view.dart';
 import 'package:phenikaa_campus/features/home/view/home_view.dart';
 import 'package:phenikaa_campus/models/user_models.dart';
+import 'package:restart_app/restart_app.dart';
 
 final authControllerProvider =
     StateNotifierProvider<AuthController, bool>((ref) {
@@ -88,13 +89,12 @@ class AuthController extends StateNotifier<bool> {
     required String password,
     required BuildContext context,
   }) async {
-    state = true;
-    print("object $email $password");
+    state = false;
     final res = await _authAPI.login(
       email: email,
       password: password,
     );
-    state = false;
+    state = true;
     res.fold(
       (l) => showSnackBar(context, l.message),
       (r) {
@@ -111,6 +111,8 @@ class AuthController extends StateNotifier<bool> {
 
   void logout(BuildContext context) async {
     final res = await _authAPI.logout();
+    // Gọi hàm restartApp để reload ứng dụng
+    Restart.restartApp();
     res.fold((l) => null, (r) {
       Navigator.pushAndRemoveUntil(
         context,

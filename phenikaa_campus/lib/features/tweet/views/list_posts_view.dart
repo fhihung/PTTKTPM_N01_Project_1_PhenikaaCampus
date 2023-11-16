@@ -101,6 +101,8 @@ class _NewPostsListState extends ConsumerState<NewPostsList> {
                   );
 
                   return switch (tweets) {
+        tweets.isE == 0
+          Restart.restartApp():
                     AsyncData(:final value) => RefreshIndicator(
                       onRefresh: () async => ref.invalidate(getTweetsProvider),
                       child: TweetList(tweets: value),
