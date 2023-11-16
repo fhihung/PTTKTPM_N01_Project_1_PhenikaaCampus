@@ -1,11 +1,14 @@
 import 'package:boxy/padding.dart';
-import 'package:flextras/flextras.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:phenikaa_campus/common/loading_page.dart';
 import 'package:phenikaa_campus/constants/assets_constants.dart';
 import 'package:phenikaa_campus/features/auth/controller/auth_controller.dart';
+import 'package:phenikaa_campus/features/education/view/canvas_view.dart';
+import 'package:phenikaa_campus/features/education/view/edu_view.dart';
+import 'package:phenikaa_campus/features/user_profile/view/user_profile_view.dart';
 import 'package:phenikaa_campus/theme/pallete.dart';
 
 class SettingProfileView extends ConsumerStatefulWidget {
@@ -16,13 +19,6 @@ class SettingProfileView extends ConsumerStatefulWidget {
 }
 
 class _SettingProfileViewState extends ConsumerState<SettingProfileView> {
-  static final actionMaps = [
-    (Icons.people, 'Edit Profile'),
-    (Icons.notifications, 'Notifications'),
-    (Icons.lock, 'Privacy'),
-    (Icons.help, 'Help'),
-    (Icons.logout, 'Logout'),
-  ];
   @override
   Widget build(BuildContext context) {
     final currentUser = ref.watch(currentUserDetailsProvider);
@@ -106,79 +102,174 @@ class _SettingProfileViewState extends ConsumerState<SettingProfileView> {
                                     ),
                                   ),
                                 ),
-                                PaddedRow(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 15,
-                                    horizontal: 20,
-                                  ),
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
+                                Container(
+                                  margin: const EdgeInsets.only(top: 31),
+                                  child: Center(
+                                    child: Text(
                                       ' ${currentUser.name}',
                                       style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 30),
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 28),
                                     ),
-                                    Row(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text.rich(
-                                              TextSpan(
-                                                text:
-                                                    '${currentUser.followers.length} ',
-                                                children: const [
-                                                  TextSpan(
-                                                    text: 'followers',
-                                                    style: TextStyle(
-                                                      color: Pallete.whiteColor,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const Gap(10),
-                                        Row(
-                                          children: [
-                                            Text.rich(
-                                              TextSpan(
-                                                text:
-                                                    '${currentUser.following.length} ',
-                                                children: const [
-                                                  TextSpan(
-                                                    text: 'following',
-                                                    style: TextStyle(
-                                                      color: Pallete.whiteColor,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                  ),
                                 ),
-                                const Gap(30),
+                                const Gap(24),
+                                Divider(
+                                  // color: Pallete.rhinoDark600,
+                                  thickness: 1,
+                                  indent: 24,
+                                  endIndent: 24,
+                                ),
+                                const Gap(5),
                                 Expanded(
-                                  child: ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    itemCount: actionMaps.length,
-                                    itemBuilder: (context, index) {
-                                      final (icon, title) = actionMaps[index];
-                                      return ListTile(
-                                        leading: Icon(icon),
-                                        title: Text(title),
-                                      );
-                                    },
+                                  child: ListView(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            UserProfileView.route(currentUser),
+                                          );
+                                        },
+                                        child: ListTile(
+                                          trailing: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Pallete.subTextColor,
+                                          ),
+                                          leading: CircleAvatar(
+                                            backgroundColor: Pallete.whiteColor,
+                                            radius: 26,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  Pallete.rhinoDark700,
+                                              radius: 25,
+                                              child: SvgPicture.asset(
+                                                AssetsConstants.profileIcon,
+                                                colorFilter: ColorFilter.mode(
+                                                  Pallete.yellow800,
+                                                  BlendMode.srcIn,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          title: Text(
+                                            'Edit Profile',
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            Education_View.route(),
+                                          );
+                                        },
+                                        child: ListTile(
+                                          trailing: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Pallete.subTextColor,
+                                          ),
+                                          leading: CircleAvatar(
+                                            backgroundColor: Pallete.whiteColor,
+                                            radius: 26,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  Pallete.rhinoDark700,
+                                              radius: 25,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: AssetImage(
+                                                        AssetsConstants
+                                                            .eduLogo),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          title: Text(
+                                            'Education',
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            Canvas_View.route(),
+                                          );
+                                        },
+                                        child: ListTile(
+                                          trailing: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Pallete.subTextColor,
+                                          ),
+                                          leading: CircleAvatar(
+                                            backgroundColor: Pallete.whiteColor,
+                                            radius: 26,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  Pallete.rhinoDark700,
+                                              radius: 25,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: AssetImage(
+                                                        AssetsConstants
+                                                            .canvasLogo),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          title: Text(
+                                            'Canvas',
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      GestureDetector(
+                                        onTap: () => {
+                                          ref
+                                              .read(authControllerProvider
+                                                  .notifier)
+                                              .logout(context),
+                                        },
+                                        child: ListTile(
+                                          trailing: const Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Pallete.subTextColor,
+                                          ),
+                                          leading: CircleAvatar(
+                                            backgroundColor: Pallete.whiteColor,
+                                            radius: 26,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  Pallete.rhinoDark700,
+                                              radius: 25,
+                                              child: SvgPicture.asset(
+                                                AssetsConstants.logoutIcon,
+                                                colorFilter: ColorFilter.mode(
+                                                  Color.fromARGB(
+                                                      255, 255, 0, 0),
+                                                  BlendMode.srcIn,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          title: Text(
+                                            'Log Out',
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                    ],
                                   ),
                                 ),
                               ],
